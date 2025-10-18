@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joven Saludable - Prototipo App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <style>
+        .screen-container {
+            max-width: 375px;
+            margin: 0 auto;
+            background: #f0f0f0;
+            border-radius: 20px;
+            padding: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .screen-frame {
+            width: 100%;
+            height: 667px;
+            border: none;
+            border-radius: 15px;
+            background: white;
+        }
+        .navigation {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .nav-btn {
+            padding: 8px 16px;
+            background: #7b3fe4;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.3s;
+        }
+        .nav-btn:hover {
+            background: #6930c3;
+            transform: translateY(-2px);
+        }
+        .nav-btn.active {
+            background: #5a189a;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 20px;
+        }
+        .description {
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1 style="font-size: 2.5rem; margin-bottom: 10px;">Joven Saludable</h1>
+        <p style="font-size: 1.2rem; opacity: 0.9;">Prototipo Interactivo de la App</p>
+    </div>
+
+    <div class="description">
+        <h3>App de Bienestar Mental para Jóvenes</h3> </div>
+
+    <div class="screen-container">
+        <iframe id="appFrame" class="screen-frame" src="splash_screen/code.html"></iframe>
+    </div>
+
+    <div class="navigation">
+        <button class="nav-btn active" onclick="loadScreen('splash_screen/code.html', this)">Splash</button>
+        <button class="nav-btn" onclick="loadScreen('welcome_screen/code.html', this)">Welcome</button>
+        <button class="nav-btn" onclick="loadScreen('login/code.html', this)">Login</button>
+        <button class="nav-btn" onclick="loadScreen('registro_-_paso_1/code.html', this)">Registro 1</button>
+        <button class="nav-btn" onclick="loadScreen('registro_-_paso_2_(intereses)/code.html', this)">Registro 2</button>
+        <button class="nav-btn" onclick="loadScreen('feed_principal_(home)/code.html', this)">Feed</button>
+        <button class="nav-btn" onclick="loadScreen('perfil_de_usuario/code.html', this)">Perfil</button>
+        <button class="nav-btn" onclick="loadScreen('chat_ia_-_pantalla_principal/code.html', this)">Chat IA</button>
+        <button class="nav-btn" onclick="loadScreen('comunidad_/_grupos/code.html', this)">Comunidad</button>
+        <button class="nav-btn" onclick="loadScreen('crear_post/code.html', this)">Crear Post</button>
+        <button class="nav-btn" onclick="loadScreen('explorar_actividades/code.html', this)">Explorar</button>
+        <button class="nav-btn" onclick="loadScreen('detalle_de_actividad/code.html', this)">Detalle</button>
+        <button class="nav-btn" onclick="loadScreen('lista_de_conversaciones/code.html', this)">Chats</button>
+        <button class="nav-btn" onclick="loadScreen('nueva_entrada_de_diario/code.html', this)">Diario</button>
+        <button class="nav-btn" onclick="loadScreen('configuración_de_privacidad/code.html', this)">Privacidad</button>
+        <button class="nav-btn" onclick="loadScreen('ajustes_generales/code.html', this)">Ajustes</button>
+        <button class="nav-btn" onclick="loadScreen('recuperar_contraseña/code.html', this)">Recovery</button>
+        <button class="nav-btn" onclick="loadScreen('bottom_tab_bar_component/code.html', this)">Navigation</button>
+    </div>
+
+    <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px; color: white; text-align: center; margin-top: 20px; backdrop-filter: blur(10px);">
+        <h3>Siguiente Paso: Implementación</h3>
+        <p><strong>Frameworks recomendados:</strong></p>
+        <p>• <strong>React Native / Expo</strong> - Para apps nativas iOS/Android</p>
+        <p>• <strong>Flutter</strong> - Cross-platform con Dart</p>
+        <p>• <strong>Ionic</strong> - Híbrido con tecnologías web</p>
+        <p>• <strong>Progressive Web App (PWA)</strong> - Web app con funcionalidades nativas</p>
+    </div>
+
+    <script>
+        function loadScreen(screenPath, buttonElement) {
+            document.getElementById('appFrame').src = screenPath;
+            
+            // Actualizar botón activo
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+            buttonElement.classList.add('active');
+        }
+
+        // Auto-rotar entre pantallas para demo
+        let currentIndex = 0;
+        const screens = [
+            'splash_screen/code.html',
+            'welcome_screen/code.html',
+            'login/code.html',
+            'feed_principal_(home)/code.html',
+            'perfil_de_usuario/code.html'
+        ];
+
+        function autoDemo() {
+            currentIndex = (currentIndex + 1) % screens.length;
+            document.getElementById('appFrame').src = screens[currentIndex];
+        }
+
+        // Descomentar para demo automático cada 5 segundos
+        // setInterval(autoDemo, 5000);
+    </script>
+</body>
+</html>

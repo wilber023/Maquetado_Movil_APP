@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Joven Saludable</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#4FD1C5",
+            "background-light": "#FFFAF0",
+            "background-dark": "#2D3748",
+            "text-light": "#2D3748",
+            "text-dark": "#FFFAF0",
+            "accent": "#2D3748",
+          },
+          fontFamily: {
+            "display": ["Inter", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.75rem",
+            "lg": "1rem",
+            "xl": "1.5rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="@container">
+<div class="@[480px]:px-4 @[480px]:py-3">
+<div class="w-full bg-center bg-no-repeat bg-cover flex flex-col justify-end overflow-hidden @[480px]:rounded-xl min-h-80" data-alt="An illustration of a diverse group of young people interacting in a supportive and positive environment." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAIusrKeS0MriGs839HZ9tI16oL5RRZlUwKuk4X8ycKdEHYHLb4NcazMj9a85bWv5Hzp6LSbrPKDKGQsaEHR2F_oqTnLxoYL_2cjB4uHpS6tTaFfy9-BMjR5-EyTp2Kt_3OAcyQNZGuan10Xw7C_T6rffcTSnretWZXIMSw2WqWZTipCgdiGitIxCh1Xrqd54E0LIHW18xCe_8YJ5ICu_kSK-tEpHUC6phaF77dzIYsSLBrSloqgML1Gxc7WPOC80euhslYC-kJ77g");'></div>
+</div>
+</div>
+<div class="grid grid-cols-1 gap-4 p-4">
+<div class="flex flex-1 gap-4 rounded-lg border border-transparent p-4 flex-row items-center">
+<div class="text-accent dark:text-primary" data-icon="Chat">
+<span class="material-symbols-outlined" style="font-size: 32px;">forum</span>
+</div>
+<div class="flex flex-col gap-1">
+<h2 class="text-text-light dark:text-text-dark text-base font-bold leading-tight">Encuentra Apoyo y Comunidad</h2>
+<p class="text-text-light/80 dark:text-text-dark/80 text-sm font-normal leading-normal">Conéctate con otros que entienden por lo que estás pasando.</p>
+</div>
+</div>
+<div class="flex flex-1 gap-4 rounded-lg border border-transparent p-4 flex-row items-center">
+<div class="text-accent dark:text-primary" data-icon="Lightbulb">
+<span class="material-symbols-outlined" style="font-size: 32px;">psychology</span>
+</div>
+<div class="flex flex-col gap-1">
+<h2 class="text-text-light dark:text-text-dark text-base font-bold leading-tight">Aprendizaje y Autodescubrimiento</h2>
+<p class="text-text-light/80 dark:text-text-dark/80 text-sm font-normal leading-normal">Obtén ideas y herramientas para mejorar tu bienestar mental.</p>
+</div>
+</div>
+<div class="flex flex-1 gap-4 rounded-lg border border-transparent p-4 flex-row items-center">
+<div class="text-accent dark:text-primary" data-icon="Shield">
+<span class="material-symbols-outlined" style="font-size: 32px;">shield</span>
+</div>
+<div class="flex flex-col gap-1">
+<h2 class="text-text-light dark:text-text-dark text-base font-bold leading-tight">Espacio Seguro y Privado</h2>
+<p class="text-text-light/80 dark:text-text-dark/80 text-sm font-normal leading-normal">Tu viaje es completamente anónimo y confidencial.</p>
+</div>
+</div>
+</div>
+<div class="flex-grow"></div>
+<div class="flex justify-center mt-8">
+<div class="flex flex-1 gap-3 max-w-[480px] flex-col items-stretch px-4 py-3">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 px-5 bg-primary text-background-dark text-base font-bold leading-normal tracking-[0.015em] w-full">
+<span class="truncate">Registrarme</span>
+</button>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 px-5 bg-transparent text-accent dark:text-primary text-base font-bold leading-normal tracking-[0.015em] w-full border-2 border-primary/30 dark:border-primary">
+<span class="truncate">Ya tengo cuenta</span>
+</button>
+</div>
+</div>
+<div class="flex items-center justify-center gap-2 pb-6 pt-4 px-4 text-center">
+<span class="material-symbols-outlined text-accent dark:text-text-dark text-base">lock</span>
+<p class="text-accent dark:text-text-dark text-sm font-normal leading-normal">100% anónimo y confidencial</p>
+</div>
+</div>
+</body></html>

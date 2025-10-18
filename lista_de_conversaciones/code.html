@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lista de Conversaciones - Joven Saludable</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": {
+              "DEFAULT": "#76B4BD",
+              "light": "#A0DDE6"
+            },
+            "accent": "#FFA07A",
+            "background-light": "#F5F9FA",
+            "background-dark": "#171121",
+            "text-light": "#333333",
+            "text-dark": "#EAEAEA",
+          },
+          fontFamily: {
+            "display": ["Nunito", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.5rem",
+            "lg": "1rem",
+            "xl": "1.5rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<!-- Header -->
+<header class="sticky top-0 z-10 bg-background-light dark:bg-background-dark/80 backdrop-blur-sm">
+<div class="flex flex-col gap-4 p-4 pb-3">
+<div class="flex items-center h-12 justify-between">
+<h1 class="text-3xl font-bold text-text-light dark:text-text-dark">Mensajes</h1>
+<div class="flex items-center gap-2">
+<button class="flex items-center justify-center size-10 rounded-full text-text-light dark:text-text-dark">
+<span class="material-symbols-outlined text-2xl">search</span>
+</button>
+<button class="flex items-center justify-center size-10 rounded-full text-text-light dark:text-text-dark">
+<span class="material-symbols-outlined text-2xl">edit_square</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Tabs -->
+<div class="px-4">
+<div class="flex border-b border-gray-200 dark:border-gray-700 gap-8">
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-primary text-primary pb-3 pt-2" href="#">
+<p class="text-sm font-bold leading-normal">Individuales</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-gray-500 dark:text-gray-400 pb-3 pt-2" href="#">
+<p class="text-sm font-bold leading-normal">Grupales</p>
+</a>
+</div>
+</div>
+</header>
+<!-- Conversation List -->
+<main class="flex-grow pt-2 pb-24">
+<div class="flex items-center gap-4 px-4 min-h-[72px] py-3 cursor-pointer hover:bg-gray-100 dark:hover:bg-background-dark/50 rounded-lg mx-2">
+<div class="relative">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-14 w-14 flex items-center justify-center bg-primary-light" data-alt="Avatar de Ana Pérez">
+<span class="text-2xl font-bold text-white">AP</span>
+</div>
+<div class="absolute bottom-0 right-0 size-4 bg-green-500 rounded-full border-2 border-background-light dark:border-background-dark"></div>
+</div>
+<div class="flex-grow">
+<p class="text-base font-bold text-text-light dark:text-text-dark line-clamp-1">Ana Pérez</p>
+<p class="text-sm font-normal text-gray-500 dark:text-gray-400 line-clamp-1">¡Claro! Nos vemos mañana a las...</p>
+</div>
+<div class="shrink-0 flex flex-col items-end gap-1">
+<p class="text-xs font-normal text-gray-500 dark:text-gray-400">10:45 AM</p>
+<div class="flex size-5 items-center justify-center bg-accent rounded-full">
+<p class="text-xs font-bold text-white">2</p>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4 px-4 min-h-[72px] py-3 cursor-pointer hover:bg-gray-100 dark:hover:bg-background-dark/50 rounded-lg mx-2">
+<div class="relative">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-14 w-14 flex items-center justify-center bg-teal-300" data-alt="Avatar de Grupo de Apoyo">
+<span class="material-symbols-outlined text-3xl text-white">groups</span>
+</div>
+</div>
+<div class="flex-grow">
+<p class="text-base font-bold text-text-light dark:text-text-dark line-clamp-1">Grupo de Apoyo</p>
+<p class="text-sm font-normal text-gray-500 dark:text-gray-400 line-clamp-1">Luis: Hola a todos, ¿cómo están?</p>
+</div>
+<div class="shrink-0 flex flex-col items-end gap-1">
+<p class="text-xs font-normal text-gray-500 dark:text-gray-400">10:30 AM</p>
+</div>
+</div>
+<div class="flex items-center gap-4 px-4 min-h-[72px] py-3 cursor-pointer hover:bg-gray-100 dark:hover:bg-background-dark/50 rounded-lg mx-2">
+<div class="relative">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-14 w-14 flex items-center justify-center bg-purple-300" data-alt="Avatar de Carlos Diaz">
+<span class="text-2xl font-bold text-white">CD</span>
+</div>
+</div>
+<div class="flex-grow">
+<p class="text-base font-bold text-text-light dark:text-text-dark line-clamp-1">Carlos Diaz</p>
+<p class="text-sm font-normal text-gray-500 dark:text-gray-400 line-clamp-1">Gracias por tu ayuda.</p>
+</div>
+<div class="shrink-0">
+<p class="text-xs font-normal text-gray-500 dark:text-gray-400">Ayer</p>
+</div>
+</div>
+<div class="flex items-center gap-4 px-4 min-h-[72px] py-3 cursor-pointer hover:bg-gray-100 dark:hover:bg-background-dark/50 rounded-lg mx-2">
+<div class="relative">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-14 w-14 flex items-center justify-center bg-orange-300" data-alt="Avatar de Sofia Gomez">
+<span class="text-2xl font-bold text-white">SG</span>
+</div>
+<div class="absolute bottom-0 right-0 size-4 bg-green-500 rounded-full border-2 border-background-light dark:border-background-dark"></div>
+</div>
+<div class="flex-grow">
+<p class="text-base font-bold text-text-light dark:text-text-dark line-clamp-1">Sofia Gomez</p>
+<p class="text-sm font-normal text-gray-500 dark:text-gray-400 line-clamp-1">Te envié el documento.</p>
+</div>
+<div class="shrink-0 flex flex-col items-end gap-1">
+<p class="text-xs font-normal text-gray-500 dark:text-gray-400">Ayer</p>
+<div class="flex size-5 items-center justify-center bg-accent rounded-full">
+<p class="text-xs font-bold text-white">1</p>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4 px-4 min-h-[72px] py-3 cursor-pointer hover:bg-gray-100 dark:hover:bg-background-dark/50 rounded-lg mx-2">
+<div class="relative">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-14 w-14 flex items-center justify-center bg-indigo-300" data-alt="Avatar de Ps. Ramirez">
+<span class="text-2xl font-bold text-white">PR</span>
+</div>
+</div>
+<div class="flex-grow">
+<p class="text-base font-bold text-text-light dark:text-text-dark line-clamp-1">Ps. Ramirez</p>
+<p class="text-sm font-normal text-gray-500 dark:text-gray-400 line-clamp-1">Tu cita está confirmada.</p>
+</div>
+<div class="shrink-0">
+<p class="text-xs font-normal text-gray-500 dark:text-gray-400">Jueves</p>
+</div>
+</div>
+<!-- Empty State -->
+<div class="text-center py-10 px-4">
+<p class="text-gray-500 dark:text-gray-400">No hay más conversaciones</p>
+</div>
+</main>
+<!-- Floating Action Button -->
+<div class="fixed bottom-24 right-4 z-20">
+<button class="flex items-center justify-center size-14 bg-primary rounded-xl shadow-lg hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined text-3xl text-white">add</span>
+</button>
+</div>
+<!-- Bottom Tab Bar -->
+<nav class="fixed bottom-0 left-0 right-0 bg-background-light dark:bg-background-dark border-t border-gray-200 dark:border-gray-700 h-20 flex items-center justify-around z-30">
+<a class="flex flex-col items-center justify-center text-gray-500 dark:text-gray-400 w-1/4" href="#">
+<span class="material-symbols-outlined text-2xl">home</span>
+<span class="text-xs mt-1">Inicio</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary w-1/4" href="#">
+<span class="material-symbols-outlined text-2xl">chat_bubble</span>
+<span class="text-xs font-bold mt-1">Mensajes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-gray-500 dark:text-gray-400 w-1/4" href="#">
+<span class="material-symbols-outlined text-2xl">article</span>
+<span class="text-xs mt-1">Recursos</span>
+</a>
+<a class="flex flex-col items-center justify-center text-gray-500 dark:text-gray-400 w-1/4" href="#">
+<span class="material-symbols-outlined text-2xl">person</span>
+<span class="text-xs mt-1">Perfil</span>
+</a>
+</nav>
+</div>
+</body></html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Recuperar Contraseña - Joven Saludable</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#89CFF0",
+            "background-light": "#F5F5F5",
+            "background-dark": "#171121",
+            "text-light": "#333333",
+            "text-dark": "#E0E0E0",
+            "accent-green": "#98FB98",
+            "accent-yellow": "#FFFFE0",
+          },
+          fontFamily: {
+            "display": ["Inter", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.75rem",
+            "lg": "1rem",
+            "xl": "1.5rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="light">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark group/design-root overflow-x-hidden font-display">
+<div class="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between">
+<div class="flex size-12 shrink-0 items-center justify-start text-text-light dark:text-text-dark">
+<span class="material-symbols-outlined !text-2xl">arrow_back</span>
+</div>
+</div>
+<div class="flex flex-col items-center justify-center p-4 text-center">
+<div class="w-full max-w-sm">
+<div class="flex justify-center mb-8">
+<div class="w-40 h-40 bg-accent-yellow rounded-full flex items-center justify-center">
+<svg class="w-24 h-24 text-primary" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+</div>
+<h1 class="text-text-light dark:text-text-dark tracking-tight text-3xl font-bold leading-tight px-4 text-center pb-3 pt-2">Recupera tu acceso</h1>
+<div class="flex flex-col max-w-md w-full items-center gap-4 px-4 py-3">
+<label class="flex flex-col w-full">
+<p class="text-text-light dark:text-text-dark text-base font-medium leading-normal pb-2 self-start">Correo electrónico</p>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-text-light dark:text-text-dark focus:outline-0 focus:ring-0 border border-gray-300 dark:border-gray-600 bg-background-light dark:bg-background-dark focus:border-primary h-14 placeholder:text-gray-400 dark:placeholder-gray-500 p-4 text-base font-normal leading-normal" placeholder="tu@email.com" value=""/>
+</label>
+</div>
+<div class="flex px-4 py-3 w-full">
+<button class="flex min-w-[84px] max-w-md cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 flex-1 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">Enviar enlace</span>
+</button>
+</div>
+<p class="text-sm text-gray-500 dark:text-gray-400 px-4 pt-2">Si el email existe, te enviaremos las instrucciones.</p>
+</div>
+</div>
+</div>
+</body></html>

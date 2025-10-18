@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cuéntanos tus intereses</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#7b3fe4",
+            "background-light": "#f7f6f8",
+            "background-dark": "#171121",
+          },
+          fontFamily: {
+            "display": ["Inter", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.5rem",
+            "lg": "1rem",
+            "xl": "1.5rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    .selected-chip {
+      background-color: #7b3fe4 !important;
+      color: #f7f6f8 !important;
+    }
+    .selected-chip .material-symbols-outlined {
+      color: #f7f6f8 !important;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden p-4">
+<header class="flex justify-end pt-2">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 flex-initial bg-transparent text-[#130e1b] dark:text-background-light text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">Saltar</span>
+</button>
+</header>
+<main class="flex-grow flex flex-col justify-center">
+<div class="text-center px-4 pt-6 pb-3">
+<h1 class="text-[#130e1b] dark:text-background-light tracking-tight text-[32px] font-bold leading-tight">Cuéntanos tus intereses</h1>
+</div>
+<div class="pb-3 pt-1 px-4 text-center">
+<p class="text-[#130e1b] dark:text-gray-300 text-base font-normal leading-normal">Selecciona tus temas favoritos para recibir recomendaciones personalizadas.</p>
+</div>
+<div class="flex gap-3 p-3 flex-wrap justify-center">
+<div class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#ece8f3] dark:bg-gray-800 pl-3 pr-4 cursor-pointer" onclick="this.classList.toggle('selected-chip')">
+<span class="material-symbols-outlined text-[#130e1b] dark:text-background-light" style="font-size: 20px;">sports_soccer</span>
+<p class="text-[#130e1b] dark:text-background-light text-sm font-medium leading-normal">Deportes</p>
+</div>
+<div class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#ece8f3] dark:bg-gray-800 pl-3 pr-4 cursor-pointer" onclick="this.classList.toggle('selected-chip')">
+<span class="material-symbols-outlined text-[#130e1b] dark:text-background-light" style="font-size: 20px;">palette</span>
+<p class="text-[#130e1b] dark:text-background-light text-sm font-medium leading-normal">Arte</p>
+</div>
+<div class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#ece8f3] dark:bg-gray-800 pl-3 pr-4 cursor-pointer" onclick="this.classList.toggle('selected-chip')">
+<span class="material-symbols-outlined text-[#130e1b] dark:text-background-light" style="font-size: 20px;">music_note</span>
+<p class="text-[#130e1b] dark:text-background-light text-sm font-medium leading-normal">Música</p>
+</div>
+<div class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#ece8f3] dark:bg-gray-800 pl-3 pr-4 cursor-pointer" onclick="this.classList.toggle('selected-chip')">
+<span class="material-symbols-outlined text-[#130e1b] dark:text-background-light" style="font-size: 20px;">book</span>
+<p class="text-[#130e1b] dark:text-background-light text-sm font-medium leading-normal">Lectura</p>
+</div>
+<div class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#ece8f3] dark:bg-gray-800 pl-3 pr-4 cursor-pointer" onclick="this.classList.toggle('selected-chip')">
+<span class="material-symbols-outlined text-[#130e1b] dark:text-background-light" style="font-size: 20px;">laptop_mac</span>
+<p class="text-[#130e1b] dark:text-background-light text-sm font-medium leading-normal">Tecnología</p>
+</div>
+<div class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#ece8f3] dark:bg-gray-800 pl-3 pr-4 cursor-pointer" onclick="this.classList.toggle('selected-chip')">
+<span class="material-symbols-outlined text-[#130e1b] dark:text-background-light" style="font-size: 20px;">eco</span>
+<p class="text-[#130e1b] dark:text-background-light text-sm font-medium leading-normal">Naturaleza</p>
+</div>
+<div class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#ece8f3] dark:bg-gray-800 pl-3 pr-4 cursor-pointer" onclick="this.classList.toggle('selected-chip')">
+<span class="material-symbols-outlined text-[#130e1b] dark:text-background-light" style="font-size: 20px;">volunteer_activism</span>
+<p class="text-[#130e1b] dark:text-background-light text-sm font-medium leading-normal">Voluntariado</p>
+</div>
+<div class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#ece8f3] dark:bg-gray-800 pl-3 pr-4 cursor-pointer" onclick="this.classList.toggle('selected-chip')">
+<span class="material-symbols-outlined text-[#130e1b] dark:text-background-light" style="font-size: 20px;">sports_esports</span>
+<p class="text-[#130e1b] dark:text-background-light text-sm font-medium leading-normal">Gaming</p>
+</div>
+<div class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#ece8f3] dark:bg-gray-800 pl-3 pr-4 cursor-pointer" onclick="this.classList.toggle('selected-chip')">
+<span class="material-symbols-outlined text-[#130e1b] dark:text-background-light" style="font-size: 20px;">photo_camera</span>
+<p class="text-[#130e1b] dark:text-background-light text-sm font-medium leading-normal">Fotografía</p>
+</div>
+<div class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#ece8f3] dark:bg-gray-800 pl-3 pr-4 cursor-pointer" onclick="this.classList.toggle('selected-chip')">
+<span class="material-symbols-outlined text-[#130e1b] dark:text-background-light" style="font-size: 20px;">restaurant</span>
+<p class="text-[#130e1b] dark:text-background-light text-sm font-medium leading-normal">Cocina</p>
+</div>
+<div class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#ece8f3] dark:bg-gray-800 pl-3 pr-4 cursor-pointer" onclick="this.classList.toggle('selected-chip')">
+<span class="material-symbols-outlined text-[#130e1b] dark:text-background-light" style="font-size: 20px;">fitbit_dance</span>
+<p class="text-[#130e1b] dark:text-background-light text-sm font-medium leading-normal">Baile</p>
+</div>
+<div class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#ece8f3] dark:bg-gray-800 pl-3 pr-4 cursor-pointer" onclick="this.classList.toggle('selected-chip')">
+<span class="material-symbols-outlined text-[#130e1b] dark:text-background-light" style="font-size: 20px;">self_improvement</span>
+<p class="text-[#130e1b] dark:text-background-light text-sm font-medium leading-normal">Meditación</p>
+</div>
+</div>
+</main>
+<footer class="flex flex-col items-center py-6 px-4">
+<button class="flex w-full max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-5 bg-primary text-[#f9f8fb] text-base font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">Completar registro</span>
+</button>
+</footer>
+</div>
+</body></html>

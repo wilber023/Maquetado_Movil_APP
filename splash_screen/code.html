@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Joven Saludable - Splash Screen</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#7b3fe4",
+            "background-light": "#f7f6f8",
+            "background-dark": "#171121",
+          },
+          fontFamily: {
+            "display": ["Inter", "sans-serif"]
+          },
+          borderRadius: { "DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px" },
+          keyframes: {
+            pulse: {
+              '0%, 100%': { opacity: '1' },
+              '50%': { opacity: '.5' },
+            }
+          },
+          animation: {
+            pulse: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex h-screen w-full flex-col items-center justify-center bg-background-light dark:bg-background-dark group/design-root overflow-hidden">
+<div class="flex flex-col items-center justify-center gap-6">
+<div class="relative w-40 h-40">
+<div class="absolute inset-0 bg-gradient-to-br from-primary to-blue-400 rounded-full opacity-30 animate-pulse"></div>
+<div class="relative flex items-center justify-center w-full h-full">
+<span class="material-symbols-outlined text-primary dark:text-white" style="font-size: 80px;">
+              self_improvement
+            </span>
+</div>
+</div>
+<div class="text-center">
+<h1 class="text-3xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-500">Joven Saludable</h1>
+<p class="mt-2 text-base text-gray-600 dark:text-gray-300">Tu espacio seguro para crecer</p>
+</div>
+</div>
+<div class="absolute bottom-10 w-full px-8">
+<div class="flex flex-col items-center gap-2">
+<div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+<div class="bg-primary h-2.5 rounded-full animate-pulse" style="width: 45%"></div>
+</div>
+<p class="text-sm text-gray-500 dark:text-gray-400">Cargando...</p>
+</div>
+</div>
+</div>
+</body></html>

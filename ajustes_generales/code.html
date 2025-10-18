@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ajustes Generales - Joven Saludable</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#007AFF",
+            "background-light": "#F5F5F7",
+            "background-dark": "#000000",
+            "text-primary-light": "#1C1C1E",
+            "text-primary-dark": "#FFFFFF",
+            "text-secondary-light": "#8E8E93",
+            "text-secondary-dark": "#8E8E93",
+            "destructive": "#FF3B30",
+            "item-bg-light": "#FFFFFF",
+            "item-bg-dark": "#1C1C1E",
+            "divider-light": "#E5E5EA",
+            "divider-dark": "#3A3A3C",
+          },
+          fontFamily: {
+            "display": ["Inter", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.5rem",
+            "lg": "0.75rem",
+            "xl": "1.5rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-primary-light dark:text-text-primary-dark">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root">
+<div class="sticky top-0 z-10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm">
+<div class="flex items-center p-4 pb-3 justify-between">
+<div class="flex size-8 shrink-0 items-center justify-center text-primary">
+<span class="material-symbols-outlined text-2xl">arrow_back_ios_new</span>
+</div>
+<h1 class="text-lg font-bold">Ajustes</h1>
+<div class="size-8"></div>
+</div>
+</div>
+<main class="flex-1 overflow-y-auto px-4 pb-24">
+<div class="space-y-6">
+<!-- Cuenta Section -->
+<div>
+<h2 class="text-text-secondary-light dark:text-text-secondary-dark text-xs uppercase font-medium px-4 pb-2">Cuenta</h2>
+<div class="bg-item-bg-light dark:bg-item-bg-dark rounded-lg">
+<div class="flex items-center gap-4 px-4 min-h-12">
+<span class="material-symbols-outlined text-primary text-xl">person</span>
+<p class="text-base font-normal flex-1 truncate">Editar perfil</p>
+<span class="material-symbols-outlined text-text-secondary-light dark:text-text-secondary-dark">chevron_right</span>
+</div>
+<hr class="border-divider-light dark:border-divider-dark ml-14"/>
+<div class="flex items-center gap-4 px-4 min-h-12">
+<span class="material-symbols-outlined text-primary text-xl">lock</span>
+<p class="text-base font-normal flex-1 truncate">Cambiar contraseña</p>
+<span class="material-symbols-outlined text-text-secondary-light dark:text-text-secondary-dark">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Privacidad y Seguridad Section -->
+<div>
+<h2 class="text-text-secondary-light dark:text-text-secondary-dark text-xs uppercase font-medium px-4 pb-2">Privacidad y Seguridad</h2>
+<div class="bg-item-bg-light dark:bg-item-bg-dark rounded-lg">
+<div class="flex items-center gap-4 px-4 min-h-12">
+<span class="material-symbols-outlined text-primary text-xl">shield</span>
+<p class="text-base font-normal flex-1 truncate">Privacidad y datos</p>
+<span class="material-symbols-outlined text-text-secondary-light dark:text-text-secondary-dark">chevron_right</span>
+</div>
+<hr class="border-divider-light dark:border-divider-dark ml-14"/>
+<div class="flex items-center gap-4 px-4 min-h-12">
+<span class="material-symbols-outlined text-primary text-xl">devices</span>
+<p class="text-base font-normal flex-1 truncate">Sesiones activas</p>
+<span class="material-symbols-outlined text-text-secondary-light dark:text-text-secondary-dark">chevron_right</span>
+</div>
+<hr class="border-divider-light dark:border-divider-dark ml-14"/>
+<div class="flex items-center gap-4 px-4 min-h-12 justify-between">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary text-xl">verified_user</span>
+<p class="text-base font-normal flex-1 truncate">Autenticación de dos factores</p>
+</div>
+<div class="relative inline-block w-11 mr-2 align-middle select-none transition duration-200 ease-in">
+<input class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" id="toggle-2fa" name="toggle" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 dark:bg-gray-600 cursor-pointer" for="toggle-2fa"></label>
+</div>
+</div>
+</div>
+</div>
+<!-- Notificaciones Section -->
+<div>
+<h2 class="text-text-secondary-light dark:text-text-secondary-dark text-xs uppercase font-medium px-4 pb-2">Notificaciones</h2>
+<div class="bg-item-bg-light dark:bg-item-bg-dark rounded-lg">
+<div class="flex items-center gap-4 px-4 min-h-12">
+<span class="material-symbols-outlined text-primary text-xl">notifications_active</span>
+<p class="text-base font-normal flex-1 truncate">Preferencias de notificación</p>
+<span class="material-symbols-outlined text-text-secondary-light dark:text-text-secondary-dark">chevron_right</span>
+</div>
+<hr class="border-divider-light dark:border-divider-dark ml-14"/>
+<div class="flex items-center gap-4 px-4 min-h-12 justify-between">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary text-xl">push_pin</span>
+<p class="text-base font-normal flex-1 truncate">Notificaciones push</p>
+</div>
+<div class="relative inline-block w-11 mr-2 align-middle select-none transition duration-200 ease-in">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" id="toggle-push" name="toggle" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-primary cursor-pointer" for="toggle-push"></label>
+</div>
+</div>
+<hr class="border-divider-light dark:border-divider-dark ml-14"/>
+<div class="flex items-center gap-4 px-4 min-h-12 justify-between">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary text-xl">vibration</span>
+<p class="text-base font-normal flex-1 truncate">Sonidos y vibraciones</p>
+</div>
+<div class="relative inline-block w-11 mr-2 align-middle select-none transition duration-200 ease-in">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" id="toggle-sounds" name="toggle" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-primary cursor-pointer" for="toggle-sounds"></label>
+</div>
+</div>
+</div>
+</div>
+<!-- Apariencia Section -->
+<div>
+<h2 class="text-text-secondary-light dark:text-text-secondary-dark text-xs uppercase font-medium px-4 pb-2">Apariencia</h2>
+<div class="bg-item-bg-light dark:bg-item-bg-dark rounded-lg">
+<div class="flex items-center gap-4 px-4 min-h-12">
+<span class="material-symbols-outlined text-primary text-xl">palette</span>
+<p class="text-base font-normal flex-1 truncate">Tema</p>
+<span class="text-text-secondary-light dark:text-text-secondary-dark mr-2">Automático</span>
+<span class="material-symbols-outlined text-text-secondary-light dark:text-text-secondary-dark">chevron_right</span>
+</div>
+<hr class="border-divider-light dark:border-divider-dark ml-14"/>
+<div class="flex items-center gap-4 px-4 min-h-12">
+<span class="material-symbols-outlined text-primary text-xl">format_size</span>
+<p class="text-base font-normal flex-1 truncate">Tamaño del texto</p>
+<span class="material-symbols-outlined text-text-secondary-light dark:text-text-secondary-dark">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Ayuda y Soporte Section -->
+<div>
+<h2 class="text-text-secondary-light dark:text-text-secondary-dark text-xs uppercase font-medium px-4 pb-2">Ayuda y Soporte</h2>
+<div class="bg-item-bg-light dark:bg-item-bg-dark rounded-lg">
+<div class="flex items-center gap-4 px-4 min-h-12">
+<span class="material-symbols-outlined text-primary text-xl">help_outline</span>
+<p class="text-base font-normal flex-1 truncate">Centro de Ayuda</p>
+<span class="material-symbols-outlined text-text-secondary-light dark:text-text-secondary-dark">chevron_right</span>
+</div>
+<hr class="border-divider-light dark:border-divider-dark ml-14"/>
+<div class="flex items-center gap-4 px-4 min-h-12">
+<span class="material-symbols-outlined text-primary text-xl">flag</span>
+<p class="text-base font-normal flex-1 truncate">Reportar un problema</p>
+<span class="material-symbols-outlined text-text-secondary-light dark:text-text-secondary-dark">chevron_right</span>
+</div>
+<hr class="border-divider-light dark:border-divider-dark ml-14"/>
+<div class="flex items-center gap-4 px-4 min-h-12">
+<span class="material-symbols-outlined text-primary text-xl">description</span>
+<p class="text-base font-normal flex-1 truncate">Términos y condiciones</p>
+<span class="material-symbols-outlined text-text-secondary-light dark:text-text-secondary-dark">chevron_right</span>
+</div>
+<hr class="border-divider-light dark:border-divider-dark ml-14"/>
+<div class="flex items-center gap-4 px-4 min-h-12">
+<span class="material-symbols-outlined text-primary text-xl">privacy_tip</span>
+<p class="text-base font-normal flex-1 truncate">Política de privacidad</p>
+<span class="material-symbols-outlined text-text-secondary-light dark:text-text-secondary-dark">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- About Section -->
+<div>
+<h2 class="text-text-secondary-light dark:text-text-secondary-dark text-xs uppercase font-medium px-4 pb-2">Acerca de</h2>
+<div class="bg-item-bg-light dark:bg-item-bg-dark rounded-lg">
+<div class="flex items-center gap-4 px-4 min-h-12">
+<span class="material-symbols-outlined text-primary text-xl">info</span>
+<p class="text-base font-normal flex-1 truncate">Acerca de Joven Saludable</p>
+<span class="material-symbols-outlined text-text-secondary-light dark:text-text-secondary-dark">chevron_right</span>
+</div>
+<hr class="border-divider-light dark:border-divider-dark ml-14"/>
+<div class="flex items-center gap-4 px-4 min-h-12 justify-between">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary text-xl">terminal</span>
+<p class="text-base font-normal flex-1 truncate">Versión</p>
+</div>
+<p class="text-text-secondary-light dark:text-text-secondary-dark text-base">1.0.0</p>
+</div>
+</div>
+</div>
+<!-- Log Out Button -->
+<div class="pt-4">
+<button class="w-full text-center text-destructive py-3 rounded-lg text-base font-medium bg-item-bg-light dark:bg-item-bg-dark">
+            Cerrar sesión
+          </button>
+</div>
+</div>
+</main>
+<!-- Bottom Tab Bar -->
+<div class="fixed bottom-0 left-0 right-0 bg-item-bg-light/80 dark:bg-item-bg-dark/80 backdrop-blur-sm border-t border-divider-light dark:border-divider-dark">
+<div class="flex justify-around h-20">
+<a class="flex flex-col items-center justify-center text-text-secondary-light dark:text-text-secondary-dark w-full" href="#">
+<span class="material-symbols-outlined text-2xl">home</span>
+<span class="text-xs">Inicio</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary-light dark:text-text-secondary-dark w-full" href="#">
+<span class="material-symbols-outlined text-2xl">grid_view</span>
+<span class="text-xs">Explorar</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary-light dark:text-text-secondary-dark w-full" href="#">
+<span class="material-symbols-outlined text-2xl">favorite</span>
+<span class="text-xs">Diario</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary w-full" href="#">
+<span class="material-symbols-outlined text-2xl">person</span>
+<span class="text-xs">Perfil</span>
+</a>
+</div>
+</div>
+</div>
+<style>
+    .toggle-checkbox:checked {
+      right: 0;
+      border-color: #007AFF;
+    }
+    .toggle-checkbox:checked + .toggle-label {
+      background-color: #007AFF;
+    }
+  </style>
+</body></html>

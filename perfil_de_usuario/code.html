@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Perfil de Usuario - Joven Saludable</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#7b3fe4",
+            "background-light": "#f7f6f8",
+            "background-dark": "#171121",
+            "teal": "#84DCC6",
+            "soft-blue": "#A5DEE5",
+            "coral": "#FFA69E",
+            "light-gray": "#F0F0F0",
+            "dark-gray": "#4A4A4A"
+          },
+          fontFamily: {
+            "display": ["Inter", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.5rem",
+            "lg": "1rem",
+            "xl": "1.5rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="bg-gradient-to-r from-teal to-soft-blue dark:from-teal/80 dark:to-soft-blue/80 p-4 pb-2 flex justify-between items-center">
+<div></div>
+<div class="flex items-center justify-end">
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 bg-transparent text-dark-gray dark:text-white gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0">
+<span class="material-symbols-outlined text-3xl">settings</span>
+</button>
+</div>
+</div>
+<div class="p-4 @container bg-gradient-to-r from-teal to-soft-blue dark:from-teal/80 dark:to-soft-blue/80">
+<div class="flex w-full flex-col gap-4 items-center">
+<div class="flex gap-4 flex-col items-center">
+<div class="relative">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full min-h-32 w-32 border-4 border-white dark:border-background-dark" data-alt="User avatar image" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBFPHB0PsPjv8ywB7PUlsV5jJLj0jicQnZLk5EmmEQhFyJ0NUawDBeCfEyn8LSjjCadM9ogyg2Th0pCovkoCc8larxofhYOJ9g5FiWBuHZ4W6a1AoM9Tbwwp2C_X4SPY30WeX5J-ZKkjue0Guzvv9c-SfHMMMe-w9xUaMEG58yEUQuOFO_pPfhSAI9OGZmQyLUhv_sx1jUqAVpdVWkNnsWNCtm0fpD_EEHco3kjC4geoa0RaA0lWDsGbtMRHmVP5dxrxDyvFoRyz2Q");'></div>
+<div class="absolute bottom-1 right-1">
+<button class="flex items-center justify-center h-8 w-8 rounded-full bg-coral text-white">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col items-center justify-center">
+<p class="text-dark-gray dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em] text-center">@usuario_positivo</p>
+<p class="text-dark-gray/80 dark:text-white/80 text-base font-normal leading-normal text-center">Amante de la naturaleza y la fotografía 🌲📷</p>
+</div>
+</div>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-coral text-white text-sm font-bold leading-normal tracking-[0.015em] w-full max-w-[480px] @[480px]:w-auto">
+<span class="truncate">Edit profile</span>
+</button>
+</div>
+</div>
+<div class="flex flex-wrap gap-3 px-4 py-3 bg-background-light dark:bg-background-dark">
+<div class="flex min-w-[111px] flex-1 basis-[fit-content] flex-col gap-2 rounded-lg bg-light-gray dark:bg-dark-gray/20 p-3 items-center text-center">
+<p class="text-dark-gray dark:text-white tracking-light text-2xl font-bold leading-tight">12</p>
+<div class="flex items-center gap-2">
+<p class="text-dark-gray/80 dark:text-white/70 text-sm font-normal leading-normal">Posts</p>
+</div>
+</div>
+<div class="flex min-w-[111px] flex-1 basis-[fit-content] flex-col gap-2 rounded-lg bg-light-gray dark:bg-dark-gray/20 p-3 items-center text-center">
+<p class="text-dark-gray dark:text-white tracking-light text-2xl font-bold leading-tight">48</p>
+<div class="flex items-center gap-2">
+<p class="text-dark-gray/80 dark:text-white/70 text-sm font-normal leading-normal">Seguidores</p>
+</div>
+</div>
+<div class="flex min-w-[111px] flex-1 basis-[fit-content] flex-col gap-2 rounded-lg bg-light-gray dark:bg-dark-gray/20 p-3 items-center text-center">
+<p class="text-dark-gray dark:text-white tracking-light text-2xl font-bold leading-tight">35</p>
+<div class="flex items-center gap-2">
+<p class="text-dark-gray/80 dark:text-white/70 text-sm font-normal leading-normal">Siguiendo</p>
+</div>
+</div>
+</div>
+<div class="pb-3 bg-background-light dark:bg-background-dark">
+<div class="flex border-b border-light-gray dark:border-dark-gray/30 px-4 justify-between">
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-coral text-dark-gray dark:text-white pb-[13px] pt-4 flex-1" href="#">
+<p class="text-dark-gray dark:text-white text-sm font-bold leading-normal tracking-[0.015em]">Posts</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-dark-gray/60 dark:text-white/60 pb-[13px] pt-4 flex-1" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">Guardados</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-dark-gray/60 dark:text-white/60 pb-[13px] pt-4 flex-1" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">Logros</p>
+</a>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-1 p-1 bg-background-light dark:bg-background-dark flex-grow">
+<div class="flex flex-col gap-1">
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover" data-alt="Post thumbnail of a scenic landscape" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAGmVM6BgUeYzS71fSd3gFIshOG_E5k6VddSOPZcjFZZTgwkJk4Upy2SWgsudbJRuCgKUhx1KvLEZRNWYJM1-9OEwJd6q3WizsZhiq_1PGTHkG8Zu7mNTs9E5qfbt9tTcsyWkCfTwNI0UfwWuTva5qs5S3QUDAlaVv8ULFyVzfibvcK1AG4fas7CdvyomwHQ5BJr6gbkummyP6Q1qnWEiLWJBlGzsTWaCdDYZ3kkzUVJcZz9Q596Hot1qEPrdII5RavZY3SuaaAJcA");'></div>
+</div>
+<div class="flex flex-col gap-1">
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover" data-alt="Post thumbnail of a person meditating" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBMFfuQU-agNcWlyfALtc4vBbeQfLdsNeYsFutlNJlS79dHKomQ0rtwlCJLlR7hjbRHGXxF_umHmIptUjVnY71P9uwNpkjCPeYBfd58XkdAbrp-WVeVgJJ23lwJ8n6ASafruVheWcyrx78kbcBANkZcUCv5RGz6u3yNUwrQo9WihCoLDsVXSVSRlnT3ifenCDjbCojNj1ZgcpcO4RUlTjuDMCdBBtv2Cx9FyxOCc9Iz7mR00yXw1aCennoPY5IG3VkuSv-jVm8eJ38");'></div>
+</div>
+<div class="flex flex-col gap-1">
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover" data-alt="Post thumbnail of healthy food" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAI6u5asBB4VHh7bgCncXqiyaPE4QpvQldh466wCq0hseLheshuiwhT2An4ZjplGxYBPe9vdpOb-Dzg8vwLXoSiW5fNAACDMoAchW0358h-a46FiffXcUxpoirhm2QCCmFHCPPMObyfV0amOr6aw8pVg45INYluUXevTPxA8_beOGtDbs93ki8YZjviBPVr8vXDtb2326N__QbTaZjtBkZjTWW_-Vadt9B6DWP0y2GPlu56HUAQEPUX2h-9BmLdIXcWrYVmT4MS5P0");'></div>
+</div>
+<div class="flex flex-col gap-1">
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover" data-alt="Post thumbnail of friends laughing" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCfF_ExZyI3yh18hpVPexjbjPMhY1Iw0AqNYpk7biHJn0dJLHVXA5B0PZ-zqXTpyMVctSsvDjxbJEA0ESzd2CKLE1Dy27UcC3IU4gegGDeeo71ZYvhxWJI3aTFeJqj6l2UJmgI6dKDvCIY6DMTLMfAyWAs1UlnleESTxJDn7VEtVMLkzk3bS5QQ06lhDgNiPyfN6kr7KEhvyRiTPO6QaUo7sbVJyOxArCz9nLRMxDUwkZe33jxCn1_dJXLhyK-khIz-YHjtnoOSbig");'></div>
+</div>
+<div class="flex flex-col gap-1">
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover" data-alt="Post thumbnail of someone painting" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuACJ247TsorZlbC4CF891PtvZwetT1kJnAVIVi9KKrFDyoDs7lnnsUspWal64QYLHb27jkelnzjtS3udeu_NYmadnxxmNnoy_XVb1GpXGtH-UFRogGPbZSIh-RfgAus8gtAH-_2wHbzhcsejkT3H177CebwMUg0-uyvCJcwT8JPDk_-OVO2CFOa2xMKeo-XvTJr5q-DVcH_9A69g9_zliXHxC84z_ITKucvWD07ro_tY3YW_pUWh74BTThueWm70DZvJ7nXgTpq3i0");'></div>
+</div>
+<div class="flex flex-col gap-1">
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover" data-alt="Post thumbnail of a book and coffee" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCa2jTQ8kMtrDxja3N5MZchEZo2-8ppyEwGTaqlxKLq9fdPe36Bl3TSQILJ57YaoKeJmFrXfKod8Pf2GF3wgDekIOEl67GDSXLPhGA8YqVVqGyot9cb1G7vUN0nzMJkS5kr3p7KC8WVTvndxVpDbSdcKp-5NBM-cOlXYcWyXWXbm5-YRKzfEnn2e7VWq4PFmdhb4e0VDaItSWZIYuwl9x6rW-tDXmXdL_5-xANJ_zIx4rB9DvhfCadYup582uqfvG_8yZijQ16lTy8");'></div>
+</div>
+</div>
+<div class="sticky bottom-0 left-0 right-0 h-16 border-t border-light-gray dark:border-dark-gray/30 bg-background-light dark:bg-background-dark flex justify-around items-center">
+<a class="flex flex-col items-center justify-center text-dark-gray/60 dark:text-white/60" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-xs">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-dark-gray/60 dark:text-white/60" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="text-xs">Explore</span>
+</a>
+<a class="flex flex-col items-center justify-center text-dark-gray/60 dark:text-white/60" href="#">
+<span class="material-symbols-outlined text-3xl">add_circle</span>
+</a>
+<a class="flex flex-col items-center justify-center text-dark-gray/60 dark:text-white/60" href="#">
+<span class="material-symbols-outlined">notifications</span>
+<span class="text-xs">Notifications</span>
+</a>
+<a class="flex flex-col items-center justify-center text-coral dark:text-coral" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-xs font-bold">Profile</span>
+</a>
+</div>
+</div>
+</body></html>

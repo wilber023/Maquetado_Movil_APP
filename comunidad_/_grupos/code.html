@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Joven Saludable - Comunidad</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#008080", // Soft Teal
+                        "background-light": "#F8F9FA",
+                        "background-dark": "#121212",
+                        "accent-orange": "#FFA07A", // Soft Orange/Coral
+                        "text-primary": "#212529",
+                        "text-secondary": "#6C757D",
+                        "text-tertiary": "#ADB5BD",
+                        "border-color": "#DEE2E6"
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.75rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<!-- Top App Bar -->
+<div class="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between sticky top-0 z-10 border-b border-border-color dark:border-gray-700">
+<div class="flex size-12 shrink-0 items-center">
+</div>
+<h2 class="text-text-primary dark:text-white text-xl font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Comunidad</h2>
+<div class="flex w-12 items-center justify-end">
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 w-10 bg-transparent text-text-primary dark:text-white">
+<span class="material-symbols-outlined text-2xl">search</span>
+</button>
+</div>
+</div>
+<!-- Tabs -->
+<div class="pb-3 bg-background-light dark:bg-background-dark sticky top-[70px] z-10">
+<div class="flex border-b border-border-color dark:border-gray-700 px-4 gap-8">
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-text-secondary pb-[13px] pt-4 flex-1" href="#">
+<p class="text-sm font-bold leading-normal">Mis grupos</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-primary text-text-primary dark:text-white pb-[13px] pt-4 flex-1" href="#">
+<p class="text-sm font-bold leading-normal">Descubrir</p>
+</a>
+</div>
+</div>
+<!-- Filter Button -->
+<div class="flex px-4 pt-4 pb-2 justify-end">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-9 px-4 bg-primary/10 text-text-primary dark:text-white dark:bg-primary/20 gap-2 text-sm font-bold leading-normal">
+<span class="material-symbols-outlined text-lg">tune</span>
+<span class="truncate">Filter</span>
+</button>
+</div>
+<main class="flex-grow pb-24">
+<!-- Group Card 1 -->
+<div class="p-4 @container">
+<div class="flex flex-col items-stretch justify-start rounded-xl @xl:flex-row @xl:items-start shadow-md bg-white dark:bg-gray-800">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-t-xl @xl:rounded-l-xl @xl:rounded-tr-none" data-alt="A group of young people painting together outdoors" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDi30aU0tBGRltohPMiP_NHpsIsnBiOiLwCxWnHNEGkR7JxrQeT6uAFrEG15B8E0U7pGStSTWuXMMrFk7IwcXLeRALJ3IzNwaCp19RFakUWeBW84wKMQnPuinrHrUlL08k5Ymj493zfyv8OaC80G9n8_a_2dGS7s_4OAYnj6xadJEiKIEcrYK3BA6-weMhIGsNl89nqXjdDQyJ2xXqbj5dCc5CsUjJ6AkWWCGcvOJePqsF6bCzPXrppxA05VZolphVt4EsN5vlbIUc");'></div>
+<div class="flex w-full min-w-72 grow flex-col items-stretch justify-center gap-3 p-4">
+<div>
+<p class="text-text-primary dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Jóvenes Creativos TGZ</p>
+<p class="text-text-secondary dark:text-text-tertiary text-sm font-normal leading-normal flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-base">groups</span> 47 miembros
+                            </p>
+</div>
+<p class="text-text-secondary dark:text-gray-300 text-sm font-normal leading-normal line-clamp-2">
+                            Un espacio para explorar tu creatividad a través del arte, la música y la escritura. ¡Únete y comparte tu talento!
+                        </p>
+<div class="flex gap-2 flex-wrap">
+<div class="flex h-7 shrink-0 items-center justify-center gap-x-2 rounded-full bg-accent-orange/20 px-3">
+<p class="text-accent-orange text-xs font-medium">Arte</p>
+</div>
+<div class="flex h-7 shrink-0 items-center justify-center gap-x-2 rounded-full bg-accent-orange/20 px-3">
+<p class="text-accent-orange text-xs font-medium">16-25 años</p>
+</div>
+<div class="flex h-7 shrink-0 items-center justify-center gap-x-2 rounded-full bg-accent-orange/20 px-3">
+<p class="text-accent-orange text-xs font-medium">Presencial</p>
+</div>
+</div>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal mt-2 self-end w-full sm:w-auto">
+<span class="truncate">Unirse</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Group Card 2 -->
+<div class="p-4 @container">
+<div class="flex flex-col items-stretch justify-start rounded-xl @xl:flex-row @xl:items-start shadow-md bg-white dark:bg-gray-800">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-t-xl @xl:rounded-l-xl @xl:rounded-tr-none" data-alt="Friends talking and supporting each other in a circle" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAyEgyq8NNciiWHroF0X8rA_h-uNiej6DwvC1odxgviCmemRC4wMUkSJo_Wb5_KRISdXhA67y-WCA8TEwca_z2qDm7oanK1IkXAHIVOgo22WK8VWad7p2nhllaFSkqb4obPReWeez6yPxBxfs5WfY3AvVT0qKTkxbhL5bNb99VN1SSAxxS7AweSZpEMk-q981COCqFyDzUEYq0pt3MAb0jZtznmt3zs8gWQ24kss7XIhyanCxBBfDkGDRwmSNGKIrla7bDHUNZ7KV4");'></div>
+<div class="flex w-full min-w-72 grow flex-col items-stretch justify-center gap-3 p-4">
+<div>
+<p class="text-text-primary dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Apoyo y Escucha Activa</p>
+<p class="text-text-secondary dark:text-text-tertiary text-sm font-normal leading-normal flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-base">groups</span> 112 miembros
+                            </p>
+</div>
+<p class="text-text-secondary dark:text-gray-300 text-sm font-normal leading-normal line-clamp-2">
+                           Un lugar seguro para hablar de lo que sientes, sin juicios. Compartimos experiencias y aprendemos juntos.
+                        </p>
+<div class="flex gap-2 flex-wrap">
+<div class="flex h-7 shrink-0 items-center justify-center gap-x-2 rounded-full bg-accent-orange/20 px-3">
+<p class="text-accent-orange text-xs font-medium">Salud Mental</p>
+</div>
+<div class="flex h-7 shrink-0 items-center justify-center gap-x-2 rounded-full bg-accent-orange/20 px-3">
+<p class="text-accent-orange text-xs font-medium">18-28 años</p>
+</div>
+<div class="flex h-7 shrink-0 items-center justify-center gap-x-2 rounded-full bg-accent-orange/20 px-3">
+<p class="text-accent-orange text-xs font-medium">En línea</p>
+</div>
+</div>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-transparent border border-primary text-primary text-sm font-bold leading-normal mt-2 self-end gap-2 w-full sm:w-auto">
+<span class="truncate">Miembro</span>
+<span class="material-symbols-outlined text-lg">check</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Group Card 3 -->
+<div class="p-4 @container">
+<div class="flex flex-col items-stretch justify-start rounded-xl @xl:flex-row @xl:items-start shadow-md bg-white dark:bg-gray-800">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-t-xl @xl:rounded-l-xl @xl:rounded-tr-none" data-alt="A group of people doing yoga in a park" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD7ILsfO0qcxUbQ4ge9qtVnbYZLpP6IQl41YkZ9QS8Mv6UXPL96tS4eGHWzrmp2GY3y7Jwn5se2hYdUIuTDSzTVL6o3tP391pjmEaZtHAKJ_Xlw1w1TMAbK4yOS8PNcLfsCjdwhFuo4hW6JN3sbDj2KeowzbSOT0Q9518c5saR0WPL52yj5dzDBCuR44Pwwm7s-lvvwphB8aZwzSDsIDqc_9uFQK-L0XqiM2msVpD6oJqxxdZxI1mp0lpY94gBFTu3E9_SHCogeO34");'></div>
+<div class="flex w-full min-w-72 grow flex-col items-stretch justify-center gap-3 p-4">
+<div>
+<p class="text-text-primary dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Mente y Cuerpo en Equilibrio</p>
+<p class="text-text-secondary dark:text-text-tertiary text-sm font-normal leading-normal flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-base">groups</span> 89 miembros
+                            </p>
+</div>
+<p class="text-text-secondary dark:text-gray-300 text-sm font-normal leading-normal line-clamp-2">
+                           Exploramos el yoga, la meditación y el ejercicio como herramientas para el bienestar emocional y físico.
+                        </p>
+<div class="flex gap-2 flex-wrap">
+<div class="flex h-7 shrink-0 items-center justify-center gap-x-2 rounded-full bg-accent-orange/20 px-3">
+<p class="text-accent-orange text-xs font-medium">Bienestar</p>
+</div>
+<div class="flex h-7 shrink-0 items-center justify-center gap-x-2 rounded-full bg-accent-orange/20 px-3">
+<p class="text-accent-orange text-xs font-medium">Todas las edades</p>
+</div>
+<div class="flex h-7 shrink-0 items-center justify-center gap-x-2 rounded-full bg-accent-orange/20 px-3">
+<p class="text-accent-orange text-xs font-medium">Presencial</p>
+</div>
+</div>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal mt-2 self-end w-full sm:w-auto">
+<span class="truncate">Unirse</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Tab Bar -->
+<div class="fixed bottom-0 left-0 right-0 h-20 bg-white dark:bg-gray-800 border-t border-border-color dark:border-gray-700 flex justify-around items-center px-2">
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-text-tertiary w-1/5" href="#">
+<span class="material-symbols-outlined text-2xl">home</span>
+<span class="text-xs mt-1">Inicio</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-text-tertiary w-1/5" href="#">
+<span class="material-symbols-outlined text-2xl">spa</span>
+<span class="text-xs mt-1">Recursos</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary w-1/5" href="#">
+<span class="material-symbols-outlined text-2xl">groups</span>
+<span class="text-xs font-bold mt-1">Comunidad</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-text-tertiary w-1/5" href="#">
+<span class="material-symbols-outlined text-2xl">chat_bubble</span>
+<span class="text-xs mt-1">Chat</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-text-tertiary w-1/5" href="#">
+<span class="material-symbols-outlined text-2xl">person</span>
+<span class="text-xs mt-1">Perfil</span>
+</a>
+</div>
+</div>
+</body></html>
