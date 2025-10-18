@@ -11,10 +11,11 @@
         .screen-container {
             max-width: 375px;
             margin: 0 auto;
-            background: #f0f0f0;
+            background: #ffffff;
             border-radius: 20px;
-            padding: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            padding: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15), 0 8px 25px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
         }
         .screen-frame {
             width: 100%;
@@ -22,50 +23,68 @@
             border: none;
             border-radius: 15px;
             background: white;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
         }
         .navigation {
             display: flex;
-            gap: 10px;
-            margin: 20px 0;
+            gap: 8px;
+            margin: 25px 0;
             flex-wrap: wrap;
             justify-content: center;
         }
         .nav-btn {
-            padding: 8px 16px;
-            background: #7b3fe4;
+            padding: 10px 18px;
+            background: #2d3748;
             color: white;
             border: none;
-            border-radius: 8px;
+            border-radius: 6px;
             cursor: pointer;
-            font-size: 12px;
-            transition: all 0.3s;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            letter-spacing: 0.3px;
         }
         .nav-btn:hover {
-            background: #6930c3;
-            transform: translateY(-2px);
+            background: #1a202c;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(45, 55, 72, 0.3);
         }
         .nav-btn.active {
-            background: #5a189a;
+            background: #000000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
         }
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
             min-height: 100vh;
-            padding: 20px;
+            padding: 30px 20px;
         }
         .header {
             text-align: center;
-            color: white;
-            margin-bottom: 20px;
+            color: #1a202c;
+            margin-bottom: 25px;
         }
         .description {
-            background: rgba(255,255,255,0.1);
-            padding: 15px;
-            border-radius: 10px;
-            color: white;
+            background: rgba(255,255,255,0.8);
+            padding: 20px;
+            border-radius: 12px;
+            color: #2d3748;
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        }
+        .footer-section {
+            background: rgba(255,255,255,0.8);
+            padding: 25px;
+            border-radius: 12px;
+            color: #2d3748;
+            text-align: center;
+            margin-top: 25px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
         }
     </style>
 </head>
@@ -76,7 +95,9 @@
     </div>
 
     <div class="description">
-        <h3>App de Bienestar Mental para Jóvenes</h3> </div>
+        <h3>App de Bienestar Mental para Jóvenes</h3>
+        <p>Explora todas las pantallas de tu app generadas con Stitch.IA. Haz clic en los botones para navegar entre las diferentes secciones.</p>
+    </div>
 
     <div class="screen-container">
         <iframe id="appFrame" class="screen-frame" src="splash_screen/code.html"></iframe>
@@ -103,7 +124,7 @@
         <button class="nav-btn" onclick="loadScreen('bottom_tab_bar_component/code.html', this)">Navigation</button>
     </div>
 
-    <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px; color: white; text-align: center; margin-top: 20px; backdrop-filter: blur(10px);">
+    <div class="footer-section">
         <h3>Siguiente Paso: Implementación</h3>
         <p><strong>Frameworks recomendados:</strong></p>
         <p>• <strong>React Native / Expo</strong> - Para apps nativas iOS/Android</p>
