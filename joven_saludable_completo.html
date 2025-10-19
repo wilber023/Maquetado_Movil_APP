@@ -1,0 +1,2460 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Joven Saludable - App Completa</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet"/>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#7b3fe4",
+                        "background-light": "#f7f6f8",
+                        "background-dark": "#171121",
+                        "chat-primary": "#48BFE3",
+                        "teal": "#84DCC6",
+                        "soft-blue": "#A5DEE5",
+                        "coral": "#FFA69E",
+                        "light-gray": "#F0F0F0",
+                        "dark-gray": "#4A4A4A",
+                        "accent": "#F5A623",
+                        "primary-light": "#007AFF",
+                        "item-bg-light": "#FFFFFF",
+                        "item-bg-dark": "#1C1C1E",
+                        "text-primary-light": "#1C1C1E",
+                        "text-primary-dark": "#FFFFFF",
+                        "text-secondary-light": "#8E8E93",
+                        "text-secondary-dark": "#8E8E93",
+                        "divider-light": "#E5E5EA",
+                        "divider-dark": "#3A3A3C",
+                        "destructive": "#FF3B30",
+                        "status-green": "#52B788",
+                        "user-bubble": "#E9ECEF",
+                        "text-color": "#495057",
+                        "welcome-primary": "#4FD1C5",
+                        "welcome-bg-light": "#FFFAF0",
+                        "welcome-text-light": "#2D3748",
+                        "welcome-accent": "#2D3748",
+                        "explore-primary": "#48C9B0",
+                        "explore-bg-light": "#F4F6F7",
+                        "explore-text-primary": "#2C3E50",
+                        "explore-text-secondary": "#85929E",
+                        "explore-accent-coral": "#F1948A",
+                        "explore-accent-yellow": "#F7DC6F",
+                        "community-primary": "#008080",
+                        "community-accent": "#FFA07A",
+                        "activity-primary": "#4A90E2",
+                        "activity-secondary": "#FFC107"
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "plus-jakarta": ["Plus Jakarta Sans", "Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #007AFF;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #007AFF;
+        }
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+    <!-- PANTALLA 1: SPLASH SCREEN -->
+    <div id="splash-screen" class="screen active relative flex h-screen w-full flex-col items-center justify-center bg-background-light dark:bg-background-dark group/design-root overflow-hidden">
+        <div class="flex flex-col items-center justify-center gap-6">
+            <div class="relative w-40 h-40">
+                <div class="absolute inset-0 bg-gradient-to-br from-primary to-blue-400 rounded-full opacity-30 animate-pulse"></div>
+                <div class="relative flex items-center justify-center w-full h-full">
+                    <span class="material-symbols-outlined text-primary dark:text-white" style="font-size: 80px;">self_improvement</span>
+                </div>
+            </div>
+            <div class="text-center">
+                <h1 class="text-3xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-500">Joven Saludable</h1>
+                <p class="mt-2 text-base text-gray-600 dark:text-gray-300">Tu espacio seguro para crecer</p>
+            </div>
+        </div>
+        <div class="absolute bottom-10 w-full px-8">
+            <div class="flex flex-col items-center gap-2">
+                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                    <div id="loading-bar" class="bg-primary h-2.5 rounded-full animate-pulse" style="width: 0%"></div>
+                </div>
+                <p class="text-sm text-gray-500 dark:text-gray-400">Cargando...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- PANTALLA 2: WELCOME SCREEN -->
+    <div id="welcome-screen" class="screen hidden relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden" style="background-color: #FFFAF0;">
+        <div class="@container">
+            <div class="@[480px]:px-4 @[480px]:py-3">
+                <div class="w-full bg-center bg-no-repeat bg-cover flex flex-col justify-end overflow-hidden @[480px]:rounded-xl min-h-80" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAIusrKeS0MriGs839HZ9tI16oL5RRZlUwKuk4X8ycKdEHYHLb4NcazMj9a85bWv5Hzp6LSbrPKDKGQsaEHR2F_oqTnLxoYL_2cjB4uHpS6tTaFfy9-BMjR5-EyTp2Kt_3OAcyQNZGuan10Xw7C_T6rffcTSnretWZXIMSw2WqWZTipCgdiGitIxCh1Xrqd54E0LIHW18xCe_8YJ5ICu_kSK-tEpHUC6phaF77dzIYsSLBrSloqgML1Gxc7WPOC80euhslYC-kJ77g");'></div>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 gap-4 p-4">
+            <div class="flex flex-1 gap-4 rounded-lg border border-transparent p-4 flex-row items-center">
+                <div class="text-welcome-accent dark:text-welcome-primary">
+                    <span class="material-symbols-outlined" style="font-size: 32px;">forum</span>
+                </div>
+                <div class="flex flex-col gap-1">
+                    <h2 class="text-welcome-text-light dark:text-white text-base font-bold leading-tight">Encuentra Apoyo y Comunidad</h2>
+                    <p class="text-welcome-text-light/80 dark:text-white/80 text-sm font-normal leading-normal">Conéctate con otros que entienden por lo que estás pasando.</p>
+                </div>
+            </div>
+            <div class="flex flex-1 gap-4 rounded-lg border border-transparent p-4 flex-row items-center">
+                <div class="text-welcome-accent dark:text-welcome-primary">
+                    <span class="material-symbols-outlined" style="font-size: 32px;">psychology</span>
+                </div>
+                <div class="flex flex-col gap-1">
+                    <h2 class="text-welcome-text-light dark:text-white text-base font-bold leading-tight">Aprendizaje y Autodescubrimiento</h2>
+                    <p class="text-welcome-text-light/80 dark:text-white/80 text-sm font-normal leading-normal">Obtén ideas y herramientas para mejorar tu bienestar mental.</p>
+                </div>
+            </div>
+            <div class="flex flex-1 gap-4 rounded-lg border border-transparent p-4 flex-row items-center">
+                <div class="text-welcome-accent dark:text-welcome-primary">
+                    <span class="material-symbols-outlined" style="font-size: 32px;">shield</span>
+                </div>
+                <div class="flex flex-col gap-1">
+                    <h2 class="text-welcome-text-light dark:text-white text-base font-bold leading-tight">Espacio Seguro y Privado</h2>
+                    <p class="text-welcome-text-light/80 dark:text-white/80 text-sm font-normal leading-normal">Tu viaje es completamente anónimo y confidencial.</p>
+                </div>
+            </div>
+        </div>
+        <div class="flex-grow"></div>
+        <div class="flex justify-center mt-8">
+            <div class="flex flex-1 gap-3 max-w-[480px] flex-col items-stretch px-4 py-3">
+                <button onclick="showScreen('registro-paso-1')" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 px-5 text-welcome-text-light text-base font-bold leading-normal tracking-[0.015em] w-full" style="background-color: #4FD1C5;">
+                    <span class="truncate">Registrarme</span>
+                </button>
+                <button onclick="showScreen('login')" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 px-5 bg-transparent text-welcome-accent dark:text-welcome-primary text-base font-bold leading-normal tracking-[0.015em] w-full border-2 border-opacity-30" style="border-color: #4FD1C5;">
+                    <span class="truncate">Ya tengo cuenta</span>
+                </button>
+            </div>
+        </div>
+        <div class="flex items-center justify-center gap-2 pb-6 pt-4 px-4 text-center">
+            <span class="material-symbols-outlined text-welcome-accent dark:text-white text-base">lock</span>
+            <p class="text-welcome-accent dark:text-white text-sm font-normal leading-normal">100% anónimo y confidencial</p>
+        </div>
+    </div>
+
+    <!-- PANTALLA 3: LOGIN -->
+    <div id="login" class="screen hidden relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark group/design-root overflow-x-hidden">
+        <div class="flex flex-col items-center justify-center p-6 space-y-8">
+            <div class="w-24 h-24 mt-12 mb-6">
+                <img class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzrng-uLD4A0uVjSQ0VkBmq-KaOUsstM5o9b0nUAPA3yfpr0JdsUiXeBxEtW-7n-wjp-i4zAcjHs4jh48ZHbvY1XRcHd9YrJDYlFM8QoFeiWWur74f9_CBsiURfWC2nteU2DtpZq_2xUHq7gvb2Vtv5ocHafxbfor_ub9hD0I1lPro6E-ZILdOTUCmfzj0D8bQEMVG_kVLLoe-JsFzockqhsTUIePknZ1kKgGuUyhK6GaxAk72FquvpG2tuidF81rw9JMnl985mas"/>
+            </div>
+            <div id="login-error" class="w-full max-w-sm p-4 bg-yellow-100/50 dark:bg-yellow-900/20 rounded-lg border border-yellow-300 dark:border-yellow-700 hidden">
+                <p class="text-yellow-800 dark:text-yellow-200 text-sm font-medium text-center">Usuario o contraseña incorrectos</p>
+            </div>
+            <div class="w-full max-w-sm space-y-6">
+                <div class="flex max-w-[480px] flex-wrap items-end gap-4">
+                    <label class="flex flex-col min-w-40 flex-1">
+                        <p class="text-gray-800 dark:text-gray-200 text-base font-medium leading-normal pb-2">Nombre de usuario</p>
+                        <input id="login-username" class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-gray-900 dark:text-white focus:outline-0 focus:ring-0 border border-gray-300 dark:border-gray-600 bg-background-light dark:bg-background-dark focus:border-primary h-14 placeholder:text-gray-500 dark:placeholder:text-gray-400 p-[15px] text-base font-normal leading-normal" placeholder="Tu nombre de usuario"/>
+                    </label>
+                </div>
+                <div class="flex max-w-[480px] flex-wrap items-end gap-4">
+                    <label class="flex flex-col min-w-40 flex-1">
+                        <p class="text-gray-800 dark:text-gray-200 text-base font-medium leading-normal pb-2">Contraseña</p>
+                        <div class="flex w-full flex-1 items-stretch rounded-xl">
+                            <input id="login-password" class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-gray-900 dark:text-white focus:outline-0 focus:ring-0 border border-gray-300 dark:border-gray-600 bg-background-light dark:bg-background-dark focus:border-primary h-14 placeholder:text-gray-500 dark:placeholder:text-gray-400 p-[15px] rounded-r-none border-r-0 pr-2 text-base font-normal leading-normal" placeholder="Tu contraseña" type="password"/>
+                            <div onclick="togglePasswordVisibility('login-password')" class="text-gray-500 dark:text-gray-400 flex border border-gray-300 dark:border-gray-600 bg-background-light dark:bg-background-dark items-center justify-center pr-[15px] rounded-r-xl border-l-0 cursor-pointer">
+                                <span class="material-symbols-outlined">visibility</span>
+                            </div>
+                        </div>
+                    </label>
+                </div>
+                <p onclick="showScreen('recuperar-password')" class="text-primary text-sm font-normal leading-normal pb-3 pt-1 px-4 text-right underline cursor-pointer">Olvidé mi contraseña</p>
+                <div class="flex px-4 py-3">
+                    <button onclick="loginUser()" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-5 flex-1 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors">
+                        <span class="truncate">Iniciar sesión</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PANTALLA 4: REGISTRO PASO 1 -->
+    <div id="registro-paso-1" class="screen hidden relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark group/design-root overflow-x-hidden">
+        <div class="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between border-b border-gray-200 dark:border-gray-700">
+            <div onclick="showScreen('welcome-screen')" class="flex size-8 shrink-0 items-center justify-center text-primary cursor-pointer">
+                <span class="material-symbols-outlined text-2xl">arrow_back_ios_new</span>
+            </div>
+            <h1 class="text-lg font-bold text-gray-900 dark:text-white">Crear cuenta</h1>
+            <div class="size-8"></div>
+        </div>
+        <div class="flex flex-col p-4 space-y-6">
+            <div class="text-center mb-6">
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">¡Bienvenido!</h2>
+                <p class="text-gray-600 dark:text-gray-400">Paso 1 de 2</p>
+                <div class="flex justify-center mt-4">
+                    <div class="flex space-x-2">
+                        <div class="w-8 h-2 bg-primary rounded-full"></div>
+                        <div class="w-8 h-2 bg-gray-300 dark:bg-gray-600 rounded-full"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Nombre de usuario</label>
+                    <div class="relative">
+                        <input id="registro-username" type="text" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary bg-white dark:bg-gray-800 text-gray-900 dark:text-white" placeholder="Elige un nombre único">
+                        <div class="absolute right-3 top-1/2 transform -translate-y-1/2">
+                            <span id="username-check" class="material-symbols-outlined text-green-500 hidden">check_circle</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email</label>
+                    <input id="registro-email" type="email" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary bg-white dark:bg-gray-800 text-gray-900 dark:text-white" placeholder="tu@email.com">
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Contraseña</label>
+                    <div class="relative">
+                        <input id="registro-password" type="password" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary bg-white dark:bg-gray-800 text-gray-900 dark:text-white" placeholder="Mínimo 8 caracteres">
+                        <div onclick="togglePasswordVisibility('registro-password')" class="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer">
+                            <span class="material-symbols-outlined text-gray-400">visibility</span>
+                        </div>
+                    </div>
+                    <div class="mt-2 space-y-1">
+                        <div class="flex items-center space-x-2">
+                            <span id="length-check" class="material-symbols-outlined text-gray-400 text-sm">radio_button_unchecked</span>
+                            <span class="text-sm text-gray-600 dark:text-gray-400">Al menos 8 caracteres</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <span id="number-check" class="material-symbols-outlined text-gray-400 text-sm">radio_button_unchecked</span>
+                            <span class="text-sm text-gray-600 dark:text-gray-400">Al menos un número</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex items-center space-x-3 p-4 bg-gray-50 dark:bg-gray-800 rounded-xl">
+                <input id="privacy-check" type="checkbox" class="w-4 h-4 text-primary bg-gray-100 border-gray-300 rounded focus:ring-primary/20">
+                <p class="text-sm text-gray-600 dark:text-gray-400">
+                    Acepto los <span class="text-primary cursor-pointer">términos y condiciones</span> y la <span class="text-primary cursor-pointer">política de privacidad</span>
+                </p>
+            </div>
+            
+            <button onclick="showScreen('registro-paso-2')" class="w-full bg-primary text-white py-3 px-4 rounded-xl font-semibold hover:bg-primary/90 transition-colors">
+                Continuar
+            </button>
+            
+            <p class="text-center text-sm text-gray-600 dark:text-gray-400">
+                ¿Ya tienes cuenta? <span onclick="showScreen('login')" class="text-primary cursor-pointer font-semibold">Inicia sesión</span>
+            </p>
+        </div>
+    </div>
+
+    <!-- PANTALLA 5: REGISTRO PASO 2 (INTERESES) -->
+    <div id="registro-paso-2" class="screen hidden relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark group/design-root overflow-x-hidden">
+        <div class="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between border-b border-gray-200 dark:border-gray-700">
+            <div onclick="showScreen('registro-paso-1')" class="flex size-8 shrink-0 items-center justify-center text-primary cursor-pointer">
+                <span class="material-symbols-outlined text-2xl">arrow_back_ios_new</span>
+            </div>
+            <h1 class="text-lg font-bold text-gray-900 dark:text-white">Tus intereses</h1>
+            <div class="size-8"></div>
+        </div>
+        <div class="flex flex-col p-4 space-y-6">
+            <div class="text-center mb-6">
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">¿Qué te interesa?</h2>
+                <p class="text-gray-600 dark:text-gray-400">Paso 2 de 2 - Selecciona al menos 3 temas</p>
+                <div class="flex justify-center mt-4">
+                    <div class="flex space-x-2">
+                        <div class="w-8 h-2 bg-primary rounded-full"></div>
+                        <div class="w-8 h-2 bg-primary rounded-full"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-4">
+                <div onclick="toggleInterest(this)" class="interest-card flex flex-col items-center p-4 border-2 border-gray-200 dark:border-gray-600 rounded-xl cursor-pointer hover:border-primary transition-colors">
+                    <span class="material-symbols-outlined text-3xl text-primary mb-2">psychology</span>
+                    <span class="text-sm font-medium text-gray-900 dark:text-white">Bienestar Mental</span>
+                </div>
+                <div onclick="toggleInterest(this)" class="interest-card flex flex-col items-center p-4 border-2 border-gray-200 dark:border-gray-600 rounded-xl cursor-pointer hover:border-primary transition-colors">
+                    <span class="material-symbols-outlined text-3xl text-primary mb-2">fitness_center</span>
+                    <span class="text-sm font-medium text-gray-900 dark:text-white">Ejercicio</span>
+                </div>
+                <div onclick="toggleInterest(this)" class="interest-card flex flex-col items-center p-4 border-2 border-gray-200 dark:border-gray-600 rounded-xl cursor-pointer hover:border-primary transition-colors">
+                    <span class="material-symbols-outlined text-3xl text-primary mb-2">palette</span>
+                    <span class="text-sm font-medium text-gray-900 dark:text-white">Arte y Creatividad</span>
+                </div>
+                <div onclick="toggleInterest(this)" class="interest-card flex flex-col items-center p-4 border-2 border-gray-200 dark:border-gray-600 rounded-xl cursor-pointer hover:border-primary transition-colors">
+                    <span class="material-symbols-outlined text-3xl text-primary mb-2">groups</span>
+                    <span class="text-sm font-medium text-gray-900 dark:text-white">Socialización</span>
+                </div>
+                <div onclick="toggleInterest(this)" class="interest-card flex flex-col items-center p-4 border-2 border-gray-200 dark:border-gray-600 rounded-xl cursor-pointer hover:border-primary transition-colors">
+                    <span class="material-symbols-outlined text-3xl text-primary mb-2">school</span>
+                    <span class="text-sm font-medium text-gray-900 dark:text-white">Estudios</span>
+                </div>
+                <div onclick="toggleInterest(this)" class="interest-card flex flex-col items-center p-4 border-2 border-gray-200 dark:border-gray-600 rounded-xl cursor-pointer hover:border-primary transition-colors">
+                    <span class="material-symbols-outlined text-3xl text-primary mb-2">music_note</span>
+                    <span class="text-sm font-medium text-gray-900 dark:text-white">Música</span>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <span id="interest-counter" class="text-sm text-gray-600 dark:text-gray-400">0 de 3 seleccionados</span>
+            </div>
+            
+            <button id="complete-registration" onclick="completeRegistration()" class="w-full bg-gray-300 text-gray-500 py-3 px-4 rounded-xl font-semibold cursor-not-allowed" disabled>
+                Completar registro
+            </button>
+        </div>
+    </div>
+
+    <!-- PANTALLA 6: FEED PRINCIPAL (HOME) -->
+    <div id="feed-principal" class="screen hidden relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden" style="background-color: #f8f9fa;">
+        <header class="sticky top-0 z-10 flex h-20 w-full items-center justify-between bg-background-light dark:bg-background-dark px-4 shadow-sm">
+            <div class="flex items-center gap-2">
+                <img class="rounded-full h-10 w-10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCc5FBQXJz-mfxU6sWT4KzNhJB48ipwB1jtMlNlkhy2uYxJBXHkSemoMVMKE-slIGKXElAGIqu-8Ikty4Pd0aG7e-AEcfa_L4IazpE8DnTiv6JUaJAskXq4WPJrNOdqvyt-Xo_G2PM8QLa_dJym82Cf1H2Lffc5_CDRrFZl2SBNG0ixYNGAMruUIbMTwfZxiHXiEQ2SmLKnP4-FKYCBgKdjDIWTSDXGe560wTNm1C9ujfqHnIq5dSyOvi1jDWmaZk-SSlugF0B0xr0"/>
+            </div>
+            <div class="flex-1 px-4">
+                <label class="flex w-full items-stretch rounded-xl h-12">
+                    <div class="text-gray-400 flex border-none bg-gray-100 dark:bg-gray-700 items-center justify-center pl-4 rounded-l-xl border-r-0">
+                        <span class="material-symbols-outlined">search</span>
+                    </div>
+                    <input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-r-xl text-base text-gray-700 dark:text-gray-300 focus:outline-0 focus:ring-0 border-none bg-gray-100 dark:bg-gray-700 focus:border-none h-full placeholder:text-gray-400 px-2" placeholder="Buscar contenido o amigos"/>
+                </label>
+            </div>
+            <div class="flex items-center gap-2">
+                <button onclick="showScreen('notificaciones')" class="relative flex cursor-pointer items-center justify-center rounded-full h-10 w-10 bg-transparent text-gray-700 dark:text-gray-300">
+                    <span class="material-symbols-outlined">notifications</span>
+                    <span class="notification-badge absolute top-1 right-1 flex h-4 w-4 items-center justify-center rounded-full bg-accent text-white text-[10px] font-bold">3</span>
+                </button>
+                <button onclick="showScreen('lista-conversaciones')" class="flex cursor-pointer items-center justify-center rounded-full h-10 w-10 bg-transparent text-gray-700 dark:text-gray-300">
+                    <span class="material-symbols-outlined">chat_bubble</span>
+                </button>
+            </div>
+        </header>
+        
+        <!-- Stories Section -->
+        <div class="w-full border-b border-gray-200 dark:border-gray-700 bg-background-light dark:bg-background-dark">
+            <div class="flex w-full overflow-x-auto p-4 gap-4">
+                <div class="flex flex-none flex-col items-center justify-center gap-2 w-20 text-center">
+                    <div class="relative">
+                        <div class="w-16 h-16 bg-center bg-no-repeat aspect-square bg-cover rounded-full" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBAeZzHjFEJanF1T56Ehe7Y5SwqDmg6e-Bw9NNWR6rQd8Kk1HxCCm6PYl-zGkf-PQeqQZbUTicBVi-w_RlkJeSw4UQq45UOmQSFsPLi4pGEuHnEx8U10JeOHepkyhBX8WKzaRe1I7PmNcfWYbutVeQG1MD4gISUuEvJiQO5y4mekrxxFlqbN5GnGEr_L2PKnXhJdWRYwPhDew1GjDjNlLlgSmYlc6W7EqxerK5CcizbSg_U0aoiqge284KIPeIl_SvtnXvu63GgCIM");'></div>
+                        <div class="absolute -bottom-1 -right-1 flex h-6 w-6 items-center justify-center rounded-full bg-primary border-2 border-background-light dark:border-background-dark text-white">
+                            <span class="material-symbols-outlined" style="font-size: 16px;">add</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 text-xs font-medium leading-normal">Tu Historia</p>
+                </div>
+                <div class="flex flex-none flex-col items-center justify-center gap-2 w-20 text-center">
+                    <div class="w-16 h-16 bg-center bg-no-repeat aspect-square bg-cover rounded-full p-0.5 border-2 border-primary" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBPN9NRpHX4RZaBN-ftf43XgAtDyetoCV9fFvBz0hpFEeNmGJ5IVLCBwl16cTd40-CCpei8j3bkiWuI10LDG89HaROCjsn1XNDihokdq5-5CyqdDG422HKqo2XeHpWcdwUQeWAjjo-2HhN4VDHBE_jOFrg_SAuxyW7JBP-11DjBSUpgbv-thxr1Yt5lXMDKoCnq13ALoO6ltaXwc3GsXxYMxaQ60dHWejU6_stYNRlm_28PjgUyeRqDf49WYj6ZGnletsnp3rVDRD8");'></div>
+                    <p class="text-gray-700 dark:text-gray-300 text-xs font-normal leading-normal">LoboSolitario</p>
+                </div>
+                <div class="flex flex-none flex-col items-center justify-center gap-2 w-20 text-center">
+                    <div class="w-16 h-16 bg-center bg-no-repeat aspect-square bg-cover rounded-full p-0.5 border-2 border-primary" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBL6cqBt_qJEO8gDQ7RD_LjQ5Bwp8iYmqOiDsaDv1BJT1_UEvGdUna6x36OCqmAZ-33amU_TFJZbGMRKpBlUJBcCxyenGR1uf2Lt8a-UfYyBiHThFZx6mUADsLMCcQuuvqNlo24L6DVL9CThIv9ALtHWBnUIYde0z-eu6JEG3mFptX6KVqqKofnOjvhAeZ_HBhQBXRAh1m7aazJ0897P0wXpR928nnsLhPgdXhtO6hV4X89NeuWZfwNzg8aGP66DiePMpx0KeQfiB8");'></div>
+                    <p class="text-gray-700 dark:text-gray-300 text-xs font-normal leading-normal">MariposaAzul</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Posts Feed -->
+        <main class="flex-grow pb-24">
+            <div id="posts-container" class="p-4 space-y-4">
+                <!-- Posts se generan dinámicamente -->
+            </div>
+        </main>
+        
+        <!-- FAB -->
+        <div class="fixed bottom-24 right-4 z-10">
+            <button onclick="showScreen('crear-post')" class="flex h-14 w-14 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-primary text-white shadow-lg">
+                <span class="material-symbols-outlined text-3xl">add</span>
+            </button>
+        </div>
+        
+        <!-- Bottom Navigation -->
+        <footer class="fixed bottom-0 left-0 right-0 z-10 flex h-20 items-center justify-around border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-background-dark">
+            <a class="flex flex-col items-center gap-1 text-primary" href="#" onclick="showScreen('feed-principal')">
+                <span class="material-symbols-outlined">home</span>
+                <span class="text-xs font-medium">Inicio</span>
+            </a>
+            <a class="flex flex-col items-center gap-1 text-gray-400" href="#" onclick="showScreen('explorar-actividades')">
+                <span class="material-symbols-outlined">explore</span>
+                <span class="text-xs font-medium">Descubrir</span>
+            </a>
+            <a class="flex flex-col items-center gap-1 text-gray-400" href="#" onclick="showScreen('comunidad-grupos')">
+                <span class="material-symbols-outlined">group</span>
+                <span class="text-xs font-medium">Comunidad</span>
+            </a>
+            <a class="flex flex-col items-center gap-1 text-gray-400" href="#" onclick="showScreen('perfil-usuario')">
+                <span class="material-symbols-outlined">person</span>
+                <span class="text-xs font-medium">Perfil</span>
+            </a>
+        </footer>
+    </div>
+
+    <!-- PANTALLA 7: CHAT IA -->
+    <div id="chat-ia" class="screen hidden relative flex h-screen w-full flex-col group/design-root overflow-hidden" style="background-color: #F8F9FA;">
+        <div class="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between border-b border-gray-200 dark:border-gray-800">
+            <div class="flex items-center gap-3">
+                <div onclick="showScreen('feed-principal')" class="cursor-pointer">
+                    <span class="material-symbols-outlined text-gray-600">arrow_back</span>
+                </div>
+                <div class="relative size-12 shrink-0">
+                    <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-12" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBz7VzcLZSSzuDZ5z0cvv9tenAZaxDA1dARn9t7pd0LshzQRsTqdo0ZsMadGB7LFbni2R6fu1lAbFtemxZZJSjgfEjn3q-wnXw-RTkn-MKQNU_g4Dq6LZsrF0DZxqxs2tGzrDyOtbotscKWsu_3vQBai9_s3hfW702-HTtSc4nG2mvsEWg_B1ZyOLe71ekfMuIVxI1u2IG1sq24px9T-N24YP1nvVem7WbVH50xOuiWLMAcFp9ywsQVV9QYsHXKLxrjNJ9VJQmv_Bg");'></div>
+                    <div class="absolute bottom-0 right-0 size-3 rounded-full bg-status-green border-2 border-background-light dark:border-background-dark"></div>
+                </div>
+                <div class="flex flex-col">
+                    <h2 class="text-text-color dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Coach IA</h2>
+                    <p class="text-status-green text-sm font-medium">En línea</p>
+                </div>
+            </div>
+            <div class="flex w-12 items-center justify-end">
+                <button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 bg-transparent text-text-color dark:text-white gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0">
+                    <span class="material-symbols-outlined">info</span>
+                </button>
+            </div>
+        </div>
+        
+        <div id="chat-messages" class="flex-1 overflow-y-auto p-4 space-y-6">
+            <div class="flex items-end gap-3">
+                <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full w-10 shrink-0" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuARbD7mV5JTokzE5jL8sjEpqpD8NSjs2jsg0pk3nuOE5OBrpTCVuGhW4NSfTj8xPdgVaHBU1E8PXQeQrXP0c1lbXaOOY1fh820zaX8n3UM-sbP7saRhxL1ZTUVvaKJcR1wkLdSc3QgOj3CraW7DgYVYTyNQFFN4VQUuNsI1w3Jv2rve4K_GH5HDr1AJQgPV1phZId51bLKLiPx1hzhEAaCQCgx7lijt61hTPrUfkzz7pUBCXKueBvgUCX3Zyw8xp_sdCDqqbmF3jWo");'></div>
+                <div class="flex flex-1 flex-col gap-1 items-start">
+                    <p class="text-text-color/80 dark:text-white/80 text-[13px] font-normal leading-normal max-w-[360px]">Coach IA</p>
+                    <p class="text-base font-normal leading-normal flex max-w-[360px] rounded-xl rounded-bl-none px-4 py-3 text-text-color dark:text-white" style="background-color: rgba(72, 191, 227, 0.2);">
+                        Hola, soy tu coach IA. Estoy aquí para escucharte sin juicios. ¿Cómo te sientes hoy?
+                    </p>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-4 bg-transparent px-4 py-2">
+                <span class="material-symbols-outlined text-text-color/60 dark:text-white/60">lock</span>
+                <p class="text-text-color/60 dark:text-white/60 text-xs font-normal leading-normal flex-1 truncate">Conversación privada y cifrada</p>
+            </div>
+        </div>
+        
+        <div class="bg-background-light dark:bg-background-dark p-4 border-t border-gray-200 dark:border-gray-800">
+            <div class="flex items-center gap-2">
+                <button class="p-2 text-text-color/70 dark:text-white/70 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
+                    <span class="material-symbols-outlined">add</span>
+                </button>
+                <input id="chat-input" class="flex-1 bg-user-bubble dark:bg-gray-700 border-none rounded-full px-4 py-3 text-text-color dark:text-white placeholder:text-text-color/60 dark:placeholder:text-white/60 focus:ring-2 focus:ring-primary/50" placeholder="Escribe cómo te sientes..." type="text"/>
+                <button onclick="sendChatMessage()" class="p-3 text-white rounded-full" style="background-color: #48BFE3;">
+                    <span class="material-symbols-outlined">send</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PANTALLA 8: CREAR POST -->
+    <div id="crear-post" class="screen hidden relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden" style="background-color: #F8F9FA;">
+        <div class="flex items-center bg-background-light dark:bg-background-dark p-4 justify-between border-b border-gray-200 dark:border-gray-700">
+            <p onclick="showScreen('feed-principal')" class="text-gray-700 dark:text-gray-300 text-base font-medium leading-normal shrink-0 cursor-pointer">Cancelar</p>
+            <h2 class="text-gray-700 dark:text-gray-300 text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Crear publicación</h2>
+            <div class="flex w-auto items-center justify-end">
+                <p id="publish-btn" onclick="publishPost()" class="text-gray-400 text-base font-bold leading-normal tracking-[0.015em] shrink-0 cursor-pointer">Publicar</p>
+            </div>
+        </div>
+        
+        <div class="p-4">
+            <div class="flex gap-3 flex-wrap">
+                <div onclick="selectPostType('text')" class="post-type-btn flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full px-4 cursor-pointer" style="background-color: rgba(160, 196, 255, 0.2);">
+                    <p class="text-sm font-medium leading-normal" style="color: #A0C4FF;">Solo texto</p>
+                </div>
+                <div onclick="selectPostType('text-image')" class="post-type-btn flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-background-light dark:bg-background-dark border border-gray-300 dark:border-gray-600 px-4 cursor-pointer">
+                    <p class="text-gray-700 dark:text-gray-300 text-sm font-medium leading-normal">Texto + imagen</p>
+                </div>
+                <div onclick="selectPostType('image')" class="post-type-btn flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-background-light dark:bg-background-dark border border-gray-300 dark:border-gray-600 px-4 cursor-pointer">
+                    <p class="text-gray-700 dark:text-gray-300 text-sm font-medium leading-normal">Solo imagen</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
+            <label class="flex flex-col min-w-40 flex-1">
+                <textarea id="post-content" class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-gray-700 dark:text-gray-300 focus:outline-0 focus:ring-0 border border-gray-300 dark:border-gray-600 bg-background-light dark:bg-background-dark focus:border-primary min-h-36 placeholder:text-gray-500 dark:placeholder:text-gray-400 p-4 text-base font-normal leading-normal" placeholder="¿Qué quieres compartir?"></textarea>
+            </label>
+        </div>
+        
+        <p id="char-counter" class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal pb-3 pt-1 px-4 text-right">0/500</p>
+        
+        <div id="image-upload-area" class="flex flex-col p-4 hidden">
+            <div class="flex flex-col items-center gap-6 rounded-xl border-2 border-dashed border-gray-300 dark:border-gray-600 px-6 py-14">
+                <span class="material-symbols-outlined text-gray-400 dark:text-gray-500" style="font-size: 48px;">add_photo_alternate</span>
+                <p class="text-gray-700 dark:text-gray-300 text-lg font-bold leading-tight tracking-[-0.015em] max-w-[480px] text-center">Toca para agregar imagen</p>
+            </div>
+        </div>
+        
+        <div class="p-4 space-y-4">
+            <div class="flex items-center justify-between">
+                <label class="text-gray-700 dark:text-gray-300" for="audience-selector">Audiencia</label>
+                <div class="relative">
+                    <select id="audience-selector" class="appearance-none bg-background-light dark:bg-background-dark border border-gray-300 dark:border-gray-600 rounded-lg py-2 pl-10 pr-4 focus:outline-none focus:ring-primary focus:border-primary text-gray-700 dark:text-gray-300">
+                        <option value="public">Público</option>
+                        <option value="friends">Amigos</option>
+                        <option value="private">Solo yo</option>
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                        <span class="material-symbols-outlined text-gray-700 dark:text-gray-300">public</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex items-center justify-between">
+                <label class="text-gray-700 dark:text-gray-300" for="location-toggle">Compartir ubicación</label>
+                <label class="switch">
+                    <input id="location-toggle" type="checkbox"/>
+                    <span class="slider round"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <!-- PANTALLA 9: EXPLORAR ACTIVIDADES -->
+    <div id="explorar-actividades" class="screen hidden relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden font-plus-jakarta" style="background-color: #F4F6F7;">
+        <div class="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between sticky top-0 z-10">
+            <div class="flex size-12 shrink-0 items-center justify-center rounded-full bg-background-light dark:bg-background-dark shadow-md">
+                <span class="material-symbols-outlined text-explore-text-primary dark:text-white">place</span>
+            </div>
+            <h1 class="text-explore-text-primary dark:text-white text-xl font-bold leading-tight tracking-tight flex-1 text-center">Actividades cerca de ti</h1>
+            <div class="flex w-12 items-center justify-end">
+                <button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 w-12 bg-transparent text-explore-text-primary dark:text-white">
+                    <span class="material-symbols-outlined text-3xl">tune</span>
+                </button>
+            </div>
+        </div>
+        
+        <div class="flex gap-3 p-4 overflow-x-auto whitespace-nowrap scrollbar-hide">
+            <div class="flex h-10 shrink-0 cursor-pointer items-center justify-center gap-x-2 rounded-full px-5" style="background-color: #48C9B0;">
+                <p class="text-white text-sm font-medium leading-normal">Todos</p>
+            </div>
+            <div class="flex h-10 shrink-0 cursor-pointer items-center justify-center gap-x-2 rounded-full bg-white dark:bg-background-dark dark:border dark:border-gray-600 px-5 shadow-sm">
+                <p class="text-explore-text-secondary dark:text-gray-400 text-sm font-medium leading-normal">Deporte</p>
+            </div>
+            <div class="flex h-10 shrink-0 cursor-pointer items-center justify-center gap-x-2 rounded-full bg-white dark:bg-background-dark dark:border dark:border-gray-600 px-5 shadow-sm">
+                <p class="text-explore-text-secondary dark:text-gray-400 text-sm font-medium leading-normal">Arte</p>
+            </div>
+            <div class="flex h-10 shrink-0 cursor-pointer items-center justify-center gap-x-2 rounded-full bg-white dark:bg-background-dark dark:border dark:border-gray-600 px-5 shadow-sm">
+                <p class="text-explore-text-secondary dark:text-gray-400 text-sm font-medium leading-normal">Social</p>
+            </div>
+        </div>
+        
+        <main class="flex flex-col gap-4 p-4 pb-28">
+            <div class="w-full @container">
+                <div class="flex flex-col items-stretch justify-start rounded-xl bg-white dark:bg-gray-800 shadow-lg overflow-hidden">
+                    <div class="w-full bg-center bg-no-repeat aspect-video bg-cover" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCUBDo-nDacZmtPHQl7URyTzXm1Ei0t07EtjZYzq3efzj94dxB-r-Hm1vW-KFFGf5VM-cpcBgZJnI4YcFyECbvgbEW7zn4XZUhHyjBfwvYftuALeP-MWiWnYvt3zRteTDsAbal2Q1SEK8-uzz0uc4bCgzXdJzTC2DmbEMgdowrARq1yErUiHosekuekZIwpBHaBN_-SSbW_0xXD3892HpmZxwrvC8fZFqrtYdq2ybZcWxdnQD6zV6LgiXzuD8XOa09g5LeJH23BZsU");'></div>
+                    <div class="flex w-full flex-col items-stretch justify-center gap-4 p-4">
+                        <div>
+                            <p class="text-explore-text-primary dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Taller de Arte Urbano</p>
+                            <p class="text-explore-text-secondary dark:text-gray-400 text-base font-normal leading-normal mt-1">Organización XYZ</p>
+                        </div>
+                        <div class="flex items-center gap-4 text-explore-text-secondary dark:text-gray-400 text-sm">
+                            <div class="flex items-center gap-1">
+                                <span class="material-symbols-outlined text-base">location_on</span>
+                                <span>A 2.3 km</span>
+                            </div>
+                            <div class="flex items-center gap-1">
+                                <span class="material-symbols-outlined text-base text-explore-accent-yellow">star</span>
+                                <span>4.5 (24 reseñas)</span>
+                            </div>
+                        </div>
+                        <div class="flex gap-2 flex-wrap">
+                            <div class="flex h-7 shrink-0 items-center justify-center gap-x-2 rounded-full px-3" style="background-color: rgba(247, 220, 111, 0.2);">
+                                <p class="text-xs font-semibold" style="color: #F7DC6F;">Gratis</p>
+                            </div>
+                            <div class="flex h-7 shrink-0 items-center justify-center gap-x-2 rounded-full px-3" style="background-color: rgba(241, 148, 138, 0.2);">
+                                <p class="text-xs font-semibold" style="color: #F1948A;">16-25 años</p>
+                            </div>
+                        </div>
+                        <button class="flex w-full mt-2 max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-4 text-white text-base font-bold leading-normal" style="background-color: #48C9B0;">
+                            <span class="truncate">Ver más</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <div class="fixed bottom-0 left-0 right-0 h-20 bg-white/80 dark:bg-background-dark/80 backdrop-blur-sm border-t border-gray-200 dark:border-gray-700 flex justify-around items-center">
+            <button onclick="showScreen('feed-principal')" class="flex flex-col items-center gap-1 text-explore-text-secondary dark:text-gray-400">
+                <span class="material-symbols-outlined">home</span>
+                <span class="text-xs">Inicio</span>
+            </button>
+            <button class="flex flex-col items-center gap-1" style="color: #48C9B0;">
+                <span class="material-symbols-outlined">explore</span>
+                <span class="text-xs font-bold">Explorar</span>
+            </button>
+            <button onclick="showScreen('chat-ia')" class="flex flex-col items-center gap-1 text-explore-text-secondary dark:text-gray-400">
+                <span class="material-symbols-outlined">chat_bubble</span>
+                <span class="text-xs">Chat</span>
+            </button>
+            <button onclick="showScreen('perfil-usuario')" class="flex flex-col items-center gap-1 text-explore-text-secondary dark:text-gray-400">
+                <span class="material-symbols-outlined">person</span>
+                <span class="text-xs">Perfil</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- PANTALLA 10: PERFIL DE USUARIO -->
+    <div id="perfil-usuario" class="screen hidden relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden" style="background-color: #f7f6f8;">
+        <div class="p-4 pb-2 flex justify-between items-center" style="background: linear-gradient(to right, #84DCC6, #A5DEE5);">
+            <div></div>
+            <div class="flex items-center justify-end">
+                <button onclick="showScreen('ajustes-generales')" class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 bg-transparent text-dark-gray dark:text-white gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0">
+                    <span class="material-symbols-outlined text-3xl">settings</span>
+                </button>
+            </div>
+        </div>
+        
+        <div class="p-4 @container" style="background: linear-gradient(to right, #84DCC6, #A5DEE5);">
+            <div class="flex w-full flex-col gap-4 items-center">
+                <div class="flex gap-4 flex-col items-center">
+                    <div class="relative">
+                        <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full min-h-32 w-32 border-4 border-white dark:border-background-dark" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBFPHB0PsPjv8ywB7PUlsV5jJLj0jicQnZLk5EmmEQhFyJ0NUawDBeCfEyn8LSjjCadM9ogyg2Th0pCovkoCc8larxofhYOJ9g5FiWBuHZ4W6a1AoM9Tbwwp2C_X4SPY30WeX5J-ZKkjue0Guzvv9c-SfHMMMe-w9xUaMEG58yEUQuOFO_pPfhSAI9OGZmQyLUhv_sx1jUqAVpdVWkNnsWNCtm0fpD_EEHco3kjC4geoa0RaA0lWDsGbtMRHmVP5dxrxDyvFoRyz2Q");'></div>
+                        <div class="absolute bottom-1 right-1">
+                            <button class="flex items-center justify-center h-8 w-8 rounded-full text-white" style="background-color: #FFA69E;">
+                                <span class="material-symbols-outlined text-lg">edit</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-center justify-center">
+                        <p class="text-dark-gray dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em] text-center">@usuario_positivo</p>
+                        <p class="text-dark-gray/80 dark:text-white/80 text-base font-normal leading-normal text-center">Amante de la naturaleza y la fotografía 🌲📷</p>
+                    </div>
+                </div>
+                <button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 text-white text-sm font-bold leading-normal tracking-[0.015em] w-full max-w-[480px] @[480px]:w-auto" style="background-color: #FFA69E;">
+                    <span class="truncate">Edit profile</span>
+                </button>
+            </div>
+        </div>
+        
+        <div class="flex flex-wrap gap-3 px-4 py-3 bg-background-light dark:bg-background-dark">
+            <div class="flex min-w-[111px] flex-1 basis-[fit-content] flex-col gap-2 rounded-lg bg-light-gray dark:bg-dark-gray/20 p-3 items-center text-center">
+                <p class="text-dark-gray dark:text-white tracking-light text-2xl font-bold leading-tight">12</p>
+                <div class="flex items-center gap-2">
+                    <p class="text-dark-gray/80 dark:text-white/70 text-sm font-normal leading-normal">Posts</p>
+                </div>
+            </div>
+            <div class="flex min-w-[111px] flex-1 basis-[fit-content] flex-col gap-2 rounded-lg bg-light-gray dark:bg-dark-gray/20 p-3 items-center text-center">
+                <p class="text-dark-gray dark:text-white tracking-light text-2xl font-bold leading-tight">48</p>
+                <div class="flex items-center gap-2">
+                    <p class="text-dark-gray/80 dark:text-white/70 text-sm font-normal leading-normal">Seguidores</p>
+                </div>
+            </div>
+            <div class="flex min-w-[111px] flex-1 basis-[fit-content] flex-col gap-2 rounded-lg bg-light-gray dark:bg-dark-gray/20 p-3 items-center text-center">
+                <p class="text-dark-gray dark:text-white tracking-light text-2xl font-bold leading-tight">35</p>
+                <div class="flex items-center gap-2">
+                    <p class="text-dark-gray/80 dark:text-white/70 text-sm font-normal leading-normal">Siguiendo</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="pb-3 bg-background-light dark:bg-background-dark">
+            <div class="flex border-b border-light-gray dark:border-dark-gray/30 px-4 justify-between">
+                <a class="flex flex-col items-center justify-center border-b-[3px] text-dark-gray dark:text-white pb-[13px] pt-4 flex-1" href="#" style="border-bottom-color: #FFA69E;">
+                    <p class="text-dark-gray dark:text-white text-sm font-bold leading-normal tracking-[0.015em]">Posts</p>
+                </a>
+                <a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-dark-gray/60 dark:text-white/60 pb-[13px] pt-4 flex-1" href="#">
+                    <p class="text-sm font-bold leading-normal tracking-[0.015em]">Guardados</p>
+                </a>
+                <a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-dark-gray/60 dark:text-white/60 pb-[13px] pt-4 flex-1" href="#">
+                    <p class="text-sm font-bold leading-normal tracking-[0.015em]">Logros</p>
+                </a>
+            </div>
+        </div>
+        
+        <div class="grid grid-cols-3 gap-1 p-1 bg-background-light dark:bg-background-dark flex-grow">
+            <div class="w-full bg-center bg-no-repeat aspect-square bg-cover" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAGmVM6BgUeYzS71fSd3gFIshOG_E5k6VddSOPZcjFZZTgwkJk4Upy2SWgsudbJRuCgKUhx1KvLEZRNWYJM1-9OEwJd6q3WizsZhiq_1PGTHkG8Zu7mNTs9E5qfbt9tTcsyWkCfTwNI0UfwWuTva5qs5S3QUDAlaVv8ULFyVzfibvcK1AG4fas7CdvyomwHQ5BJr6gbkummyP6Q1qnWEiLWJBlGzsTWaCdDYZ3kkzUVJcZz9Q596Hot1qEPrdII5RavZY3SuaaAJcA");'></div>
+            <div class="w-full bg-center bg-no-repeat aspect-square bg-cover" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBMFfuQU-agNcWlyfALtc4vBbeQfLdsNeYsFutlNJlS79dHKomQ0rtwlCJLlR7hjbRHGXxF_umHmIptUjVnY71P9uwNpkjCPeYBfd58XkdAbrp-WVeVgJJ23lwJ8n6ASafruVheWcyrx78kbcBANkZcUCv5RGz6u3yNUwrQo9WihCoLDsVXSVSRlnT3ifenCDjbCojNj1ZgcpcO4RUlTjuDMCdBBtv2Cx9FyxOCc9Iz7mR00yXw1aCennoPY5IG3VkuSv-jVm8eJ38");'></div>
+            <div class="w-full bg-center bg-no-repeat aspect-square bg-cover" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAI6u5asBB4VHh7bgCncXqiyaPE4QpvQldh466wCq0hseLheshuiwhT2An4ZjplGxYBPe9vdpOb-Dzg8vwLXoSiW5fNAACDMoAchW0358h-a46FiffXcUxpoirhm2QCCmFHCPPMObyfV0amOr6aw8pVg45INYluUXevTPxA8_beOGtDbs93ki8YZjviBPVr8vXDtb2326N__QbTaZjtBkZjTWW_-Vadt9B6DWP0y2GPlu56HUAQEPUX2h-9BmLdIXcWrYVmT4MS5P0");'></div>
+            <div class="w-full bg-center bg-no-repeat aspect-square bg-cover" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCfF_ExZyI3yh18hpVPexjbjPMhY1Iw0AqNYpk7biHJn0dJLHVXA5B0PZ-zqXTpyMVctSsvDjxbJEA0ESzd2CKLE1Dy27UcC3IU4gegGDeeo71ZYvhxWJI3aTFeJqj6l2UJmgI6dKDvCIY6DMTLMfAyWAs1UlnleESTxJDn7VEtVMLkzk3bS5QQ06lhDgNiPyfN6kr7KEhvyRiTPO6QaUo7sbVJyOxArCz9nLRMxDUwkZe33jxCn1_dJXLhyK-khIz-YHjtnoOSbig");'></div>
+            <div class="w-full bg-center bg-no-repeat aspect-square bg-cover" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuACJ247TsorZlbC4CF891PtvZwetT1kJnAVIVi9KKrFDyoDs7lnnsUspWal64QYLHb27jkelnzjtS3udeu_NYmadnxxmNnoy_XVb1GpXGtH-UFRogGPbZSIh-RfgAus8gtAH-_2wHbzhcsejkT3H177CebwMUg0-uyvCJcwT8JPDk_-OVO2CFOa2xMKeo-XvTJr5q-DVcH_9A69g9_zliXHxC84z_ITKucvWD07ro_tY3YW_pUWh74BTThueWm70DZvJ7nXgTpq3i0");'></div>
+            <div class="w-full bg-center bg-no-repeat aspect-square bg-cover" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCa2jTQ8kMtrDxja3N5MZchEZo2-8ppyEwGTaqlxKLq9fdPe36Bl3TSQILJ57YaoKeJmFrXfKod8Pf2GF3wgDekIOEl67GDSXLPhGA8YqVVqGyot9cb1G7vUN0nzMJkS5kr3p7KC8WVTvndxVpDbSdcKp-5NBM-cOlXYcWyXWXbm5-YRKzfEnn2e7VWq4PFmdhb4e0VDaItSWZIYuwl9x6rW-tDXmXdL_5-xANJ_zIx4rB9DvhfCadYup582uqfvG_8yZijQ16lTy8");'></div>
+        </div>
+        
+        <div class="sticky bottom-0 left-0 right-0 h-16 border-t border-light-gray dark:border-dark-gray/30 bg-background-light dark:bg-background-dark flex justify-around items-center">
+            <a onclick="showScreen('feed-principal')" class="flex flex-col items-center justify-center text-dark-gray/60 dark:text-white/60 cursor-pointer" href="#">
+                <span class="material-symbols-outlined">home</span>
+                <span class="text-xs">Home</span>
+            </a>
+            <a onclick="showScreen('explorar-actividades')" class="flex flex-col items-center justify-center text-dark-gray/60 dark:text-white/60 cursor-pointer" href="#">
+                <span class="material-symbols-outlined">explore</span>
+                <span class="text-xs">Explore</span>
+            </a>
+            <a onclick="showScreen('nueva-entrada-diario')" class="flex flex-col items-center justify-center text-dark-gray/60 dark:text-white/60 cursor-pointer" href="#">
+                <span class="material-symbols-outlined text-3xl">add_circle</span>
+            </a>
+            <a class="flex flex-col items-center justify-center text-dark-gray/60 dark:text-white/60" href="#">
+                <span class="material-symbols-outlined">notifications</span>
+                <span class="text-xs">Notifications</span>
+            </a>
+            <a class="flex flex-col items-center justify-center cursor-pointer" href="#" style="color: #FFA69E;">
+                <span class="material-symbols-outlined">person</span>
+                <span class="text-xs font-bold">Profile</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- PANTALLA 11: NUEVA ENTRADA DE DIARIO -->
+    <div id="nueva-entrada-diario" class="screen hidden relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden" style="background-color: #F8F9FA;">
+        <div class="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between sticky top-0 z-10">
+            <div onclick="showScreen('perfil-usuario')" class="text-gray-700 dark:text-gray-300 flex size-12 shrink-0 items-center cursor-pointer">
+                <span class="material-symbols-outlined text-2xl">arrow_back</span>
+            </div>
+            <h2 class="text-gray-700 dark:text-gray-300 text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Nueva Entrada de Diario</h2>
+            <div class="flex w-12 items-center justify-end">
+                <p onclick="saveDiaryEntry()" class="text-primary text-base font-bold leading-normal tracking-[0.015em] shrink-0 cursor-pointer">Guardar</p>
+            </div>
+        </div>
+        
+        <div class="flex flex-col flex-grow p-4 space-y-6">
+            <h2 class="text-gray-700 dark:text-gray-300 tracking-light text-[28px] font-bold leading-tight text-left">¿Cómo te sientes?</h2>
+            
+            <div class="flex justify-around items-center py-4">
+                <span onclick="selectMood(1)" class="mood-emoji text-4xl cursor-pointer opacity-50 hover:opacity-100 transition-all duration-200">😣</span>
+                <span onclick="selectMood(2)" class="mood-emoji text-4xl cursor-pointer opacity-50 hover:opacity-100 transition-all duration-200">😔</span>
+                <span onclick="selectMood(3)" class="mood-emoji text-5xl cursor-pointer" style="color: #FFD700;">😐</span>
+                <span onclick="selectMood(4)" class="mood-emoji text-4xl cursor-pointer opacity-50 hover:opacity-100 transition-all duration-200">😀</span>
+                <span onclick="selectMood(5)" class="mood-emoji text-4xl cursor-pointer opacity-50 hover:opacity-100 transition-all duration-200">😊</span>
+            </div>
+            
+            <div class="flex flex-col">
+                <label class="text-gray-700 dark:text-gray-300 text-base font-medium leading-normal pb-2">¿Qué pasó hoy?</label>
+                <textarea id="diary-content" class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-gray-700 dark:text-gray-300 focus:outline-0 focus:ring-0 border border-gray-300 dark:border-gray-600 bg-background-light dark:bg-background-dark focus:border-primary min-h-36 placeholder:text-gray-400 dark:placeholder-gray-500 p-[15px] text-base font-normal leading-normal" placeholder="Escribe sobre tu día..."></textarea>
+            </div>
+            
+            <div class="flex gap-3 flex-wrap">
+                <div onclick="toggleTag(this, 'Actividad')" class="diary-tag flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-primary/20 px-3 cursor-pointer">
+                    <span class="material-symbols-outlined text-primary text-lg">directions_run</span>
+                    <p class="text-primary text-sm font-medium leading-normal">Actividad</p>
+                </div>
+                <div onclick="toggleTag(this, 'Personas')" class="diary-tag flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-primary/20 px-3 cursor-pointer">
+                    <span class="material-symbols-outlined text-primary text-lg">group</span>
+                    <p class="text-primary text-sm font-medium leading-normal">Personas</p>
+                </div>
+                <div onclick="toggleTag(this, 'Lugar')" class="diary-tag flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-primary/20 px-3 cursor-pointer">
+                    <span class="material-symbols-outlined text-primary text-lg">location_on</span>
+                    <p class="text-primary text-sm font-medium leading-normal">Lugar</p>
+                </div>
+                <div class="flex size-8 shrink-0 items-center justify-center rounded-xl bg-primary/20 cursor-pointer">
+                    <span class="material-symbols-outlined text-primary text-lg">add</span>
+                </div>
+            </div>
+            
+            <div>
+                <label class="text-gray-700 dark:text-gray-300 text-base font-medium leading-normal pb-2 block">Nivel de Energía</label>
+                <div class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-gray-700 dark:text-gray-300 text-2xl">battery_5_bar</span>
+                    <input id="energy-level" class="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer range-lg accent-primary" max="100" min="0" type="range" value="75"/>
+                </div>
+            </div>
+            
+            <div class="flex items-center justify-center gap-2 p-4 bg-primary/10 rounded-lg">
+                <span class="material-symbols-outlined text-primary">lock</span>
+                <p class="text-primary font-medium text-sm">Solo tú puedes ver esto</p>
+            </div>
+        </div>
+        
+        <div class="p-4 mt-auto">
+            <button onclick="saveDiaryEntry()" class="w-full bg-primary text-white font-bold py-4 px-4 rounded-xl hover:bg-opacity-90 transition-colors">Guardar entrada</button>
+        </div>
+    </div>
+
+    <!-- PANTALLA 12: LISTA DE CONVERSACIONES -->
+    <div id="lista-conversaciones" class="screen hidden relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden" style="background-color: #f8f9fa;">
+        <header class="sticky top-0 z-10 flex h-16 w-full items-center justify-between bg-white dark:bg-gray-800 px-4 shadow-sm border-b border-gray-200 dark:border-gray-700">
+            <div onclick="showScreen('feed-principal')" class="cursor-pointer">
+                <span class="material-symbols-outlined text-gray-600 dark:text-gray-300">arrow_back</span>
+            </div>
+            <h1 class="text-lg font-bold text-gray-900 dark:text-white">Mensajes</h1>
+            <div class="cursor-pointer">
+                <span class="material-symbols-outlined text-gray-600 dark:text-gray-300">edit</span>
+            </div>
+        </header>
+        
+        <div class="p-4">
+            <div class="relative">
+                <input class="w-full px-4 py-3 pl-10 bg-gray-100 dark:bg-gray-700 border-none rounded-xl focus:ring-2 focus:ring-primary/20 text-gray-900 dark:text-white placeholder:text-gray-500" placeholder="Buscar conversaciones..."/>
+                <span class="material-symbols-outlined absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">search</span>
+            </div>
+        </div>
+        
+        <div class="flex-1 overflow-y-auto">
+            <div class="space-y-1">
+                <!-- Conversación con Coach IA -->
+                <div onclick="showScreen('chat-ia')" class="flex items-center gap-3 p-4 hover:bg-gray-50 dark:hover:bg-gray-800 cursor-pointer border-b border-gray-100 dark:border-gray-700">
+                    <div class="relative">
+                        <div class="w-12 h-12 bg-center bg-no-repeat aspect-square bg-cover rounded-full" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBz7VzcLZSSzuDZ5z0cvv9tenAZaxDA1dARn9t7pd0LshzQRsTqdo0ZsMadGB7LFbni2R6fu1lAbFtemxZZJSjgfEjn3q-wnXw-RTkn-MKQNU_g4Dq6LZsrF0DZxqxs2tGzrDyOtbotscKWsu_3vQBai9_s3hfW702-HTtSc4nG2mvsEWg_B1ZyOLe71ekfMuIVxI1u2IG1sq24px9T-N24YP1nvVem7WbVH50xOuiWLMAcFp9ywsQVV9QYsHXKLxrjNJ9VJQmv_Bg");'></div>
+                        <div class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-white dark:border-gray-800"></div>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-sm font-semibold text-gray-900 dark:text-white truncate">Coach IA</h3>
+                            <span class="text-xs text-gray-500 dark:text-gray-400">ahora</span>
+                        </div>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 truncate">¿Cómo te sientes hoy? Estoy aquí para...</p>
+                    </div>
+                    <div class="w-2 h-2 bg-primary rounded-full"></div>
+                </div>
+                
+                <!-- Conversación grupal -->
+                <div class="flex items-center gap-3 p-4 hover:bg-gray-50 dark:hover:bg-gray-800 cursor-pointer border-b border-gray-100 dark:border-gray-700">
+                    <div class="relative">
+                        <div class="w-12 h-12 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full flex items-center justify-center">
+                            <span class="material-symbols-outlined text-white">groups</span>
+                        </div>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-sm font-semibold text-gray-900 dark:text-white truncate">Grupo de Apoyo</h3>
+                            <span class="text-xs text-gray-500 dark:text-gray-400">2h</span>
+                        </div>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 truncate">MariposaAzul: ¡Qué buen día he tenido!</p>
+                    </div>
+                </div>
+                
+                <!-- Conversación individual -->
+                <div class="flex items-center gap-3 p-4 hover:bg-gray-50 dark:hover:bg-gray-800 cursor-pointer border-b border-gray-100 dark:border-gray-700">
+                    <div class="w-12 h-12 bg-center bg-no-repeat aspect-square bg-cover rounded-full" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBPN9NRpHX4RZaBN-ftf43XgAtDyetoCV9fFvBz0hpFEeNmGJ5IVLCBwl16cTd40-CCpei8j3bkiWuI10LDG89HaROCjsn1XNDihokdq5-5CyqdDG422HKqo2XeHpWcdwUQeWAjjo-2HhN4VDHBE_jOFrg_SAuxyW7JBP-11DjBSUpgbv-thxr1Yt5lXMDKoCnq13ALoO6ltaXwc3GsXxYMxaQ60dHWejU6_stYNRlm_28PjgUyeRqDf49WYj6ZGnletsnp3rVDRD8");'></div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-sm font-semibold text-gray-900 dark:text-white truncate">LoboSolitario</h3>
+                            <span class="text-xs text-gray-500 dark:text-gray-400">1d</span>
+                        </div>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 truncate">Gracias por el consejo de ayer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="fixed bottom-24 right-4 z-10">
+            <button class="flex h-14 w-14 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-primary text-white shadow-lg">
+                <span class="material-symbols-outlined text-3xl">edit</span>
+            </button>
+        </div>
+        
+        <footer class="sticky bottom-0 left-0 right-0 z-10 flex h-20 items-center justify-around border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-background-dark">
+            <a onclick="showScreen('feed-principal')" class="flex flex-col items-center gap-1 text-gray-400 cursor-pointer">
+                <span class="material-symbols-outlined">home</span>
+                <span class="text-xs font-medium">Inicio</span>
+            </a>
+            <a onclick="showScreen('explorar-actividades')" class="flex flex-col items-center gap-1 text-gray-400 cursor-pointer">
+                <span class="material-symbols-outlined">explore</span>
+                <span class="text-xs font-medium">Descubrir</span>
+            </a>
+            <a onclick="showScreen('comunidad-grupos')" class="flex flex-col items-center gap-1 text-gray-400 cursor-pointer">
+                <span class="material-symbols-outlined">group</span>
+                <span class="text-xs font-medium">Comunidad</span>
+            </a>
+            <a onclick="showScreen('perfil-usuario')" class="flex flex-col items-center gap-1 text-gray-400 cursor-pointer">
+                <span class="material-symbols-outlined">person</span>
+                <span class="text-xs font-medium">Perfil</span>
+            </a>
+        </footer>
+    </div>
+
+    <!-- PANTALLA 13: AJUSTES GENERALES -->
+    <div id="ajustes-generales" class="screen hidden bg-background-light dark:bg-background-dark font-display text-text-primary-light dark:text-text-primary-dark relative flex h-auto min-h-screen w-full flex-col group/design-root">
+        <div class="sticky top-0 z-10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm">
+            <div class="flex items-center p-4 pb-3 justify-between">
+                <div onclick="showScreen('perfil-usuario')" class="flex size-8 shrink-0 items-center justify-center text-primary cursor-pointer">
+                    <span class="material-symbols-outlined text-2xl">arrow_back_ios_new</span>
+                </div>
+                <h1 class="text-lg font-bold">Ajustes</h1>
+                <div class="size-8"></div>
+            </div>
+        </div>
+        
+        <main class="flex-1 overflow-y-auto px-4 pb-24">
+            <div class="space-y-6">
+                <!-- Cuenta Section -->
+                <div>
+                    <h2 class="text-text-secondary-light dark:text-text-secondary-dark text-xs uppercase font-medium px-4 pb-2">Cuenta</h2>
+                    <div class="bg-item-bg-light dark:bg-item-bg-dark rounded-lg">
+                        <div class="flex items-center gap-4 px-4 min-h-12 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800">
+                            <span class="material-symbols-outlined text-primary text-xl">person</span>
+                            <p class="text-base font-normal flex-1 truncate">Editar perfil</p>
+                            <span class="material-symbols-outlined text-text-secondary-light dark:text-text-secondary-dark">chevron_right</span>
+                        </div>
+                        <hr class="border-divider-light dark:border-divider-dark ml-14"/>
+                        <div class="flex items-center gap-4 px-4 min-h-12 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800">
+                            <span class="material-symbols-outlined text-primary text-xl">lock</span>
+                            <p class="text-base font-normal flex-1 truncate">Cambiar contraseña</p>
+                            <span class="material-symbols-outlined text-text-secondary-light dark:text-text-secondary-dark">chevron_right</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Privacidad y Seguridad Section -->
+                <div>
+                    <h2 class="text-text-secondary-light dark:text-text-secondary-dark text-xs uppercase font-medium px-4 pb-2">Privacidad y Seguridad</h2>
+                    <div class="bg-item-bg-light dark:bg-item-bg-dark rounded-lg">
+                        <div onclick="showScreen('configuracion-privacidad')" class="flex items-center gap-4 px-4 min-h-12 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800">
+                            <span class="material-symbols-outlined text-primary text-xl">shield</span>
+                            <p class="text-base font-normal flex-1 truncate">Privacidad y datos</p>
+                            <span class="material-symbols-outlined text-text-secondary-light dark:text-text-secondary-dark">chevron_right</span>
+                        </div>
+                        <hr class="border-divider-light dark:border-divider-dark ml-14"/>
+                        <div class="flex items-center gap-4 px-4 min-h-12 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800">
+                            <span class="material-symbols-outlined text-primary text-xl">devices</span>
+                            <p class="text-base font-normal flex-1 truncate">Sesiones activas</p>
+                            <span class="material-symbols-outlined text-text-secondary-light dark:text-text-secondary-dark">chevron_right</span>
+                        </div>
+                        <hr class="border-divider-light dark:border-divider-dark ml-14"/>
+                        <div class="flex items-center gap-4 px-4 min-h-12 justify-between">
+                            <div class="flex items-center gap-4">
+                                <span class="material-symbols-outlined text-primary text-xl">verified_user</span>
+                                <p class="text-base font-normal flex-1 truncate">Autenticación de dos factores</p>
+                            </div>
+                            <div class="relative inline-block w-11 mr-2 align-middle select-none transition duration-200 ease-in">
+                                <input class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" id="toggle-2fa" name="toggle" type="checkbox"/>
+                                <label class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 dark:bg-gray-600 cursor-pointer" for="toggle-2fa"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Notificaciones Section -->
+                <div>
+                    <h2 class="text-text-secondary-light dark:text-text-secondary-dark text-xs uppercase font-medium px-4 pb-2">Notificaciones</h2>
+                    <div class="bg-item-bg-light dark:bg-item-bg-dark rounded-lg">
+                        <div class="flex items-center gap-4 px-4 min-h-12 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800">
+                            <span class="material-symbols-outlined text-primary text-xl">notifications_active</span>
+                            <p class="text-base font-normal flex-1 truncate">Preferencias de notificación</p>
+                            <span class="material-symbols-outlined text-text-secondary-light dark:text-text-secondary-dark">chevron_right</span>
+                        </div>
+                        <hr class="border-divider-light dark:border-divider-dark ml-14"/>
+                        <div class="flex items-center gap-4 px-4 min-h-12 justify-between">
+                            <div class="flex items-center gap-4">
+                                <span class="material-symbols-outlined text-primary text-xl">push_pin</span>
+                                <p class="text-base font-normal flex-1 truncate">Notificaciones push</p>
+                            </div>
+                            <div class="relative inline-block w-11 mr-2 align-middle select-none transition duration-200 ease-in">
+                                <input checked class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" id="toggle-push" name="toggle" type="checkbox"/>
+                                <label class="toggle-label block overflow-hidden h-6 rounded-full bg-primary-light cursor-pointer" for="toggle-push"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Log Out Button -->
+                <div class="pt-4">
+                    <button onclick="logout()" class="w-full text-center text-destructive py-3 rounded-lg text-base font-medium bg-item-bg-light dark:bg-item-bg-dark hover:bg-red-50 dark:hover:bg-red-900/20">
+                        Cerrar sesión
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- PANTALLA 14: RECUPERAR CONTRASEÑA -->
+    <div id="recuperar-password" class="screen hidden relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark group/design-root overflow-x-hidden">
+        <div class="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between border-b border-gray-200 dark:border-gray-700">
+            <div onclick="showScreen('login')" class="flex size-8 shrink-0 items-center justify-center text-primary cursor-pointer">
+                <span class="material-symbols-outlined text-2xl">arrow_back_ios_new</span>
+            </div>
+            <h1 class="text-lg font-bold text-gray-900 dark:text-white">Recuperar contraseña</h1>
+            <div class="size-8"></div>
+        </div>
+        
+        <div class="flex flex-col items-center justify-center p-6 space-y-8 flex-grow">
+            <div class="w-24 h-24 mb-6 flex items-center justify-center bg-primary/10 rounded-full">
+                <span class="material-symbols-outlined text-primary text-5xl">lock_reset</span>
+            </div>
+            
+            <div class="text-center space-y-4 max-w-sm">
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white">¿Olvidaste tu contraseña?</h2>
+                <p class="text-gray-600 dark:text-gray-400">No te preocupes, te enviaremos instrucciones para restablecerla.</p>
+            </div>
+            
+            <div class="w-full max-w-sm space-y-6">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Correo electrónico</label>
+                        <input id="recovery-email" type="email" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary bg-white dark:bg-gray-800 text-gray-900 dark:text-white" placeholder="tu@email.com">
+                    </div>
+                </div>
+                
+                <button onclick="sendRecoveryEmail()" class="w-full bg-primary text-white py-3 px-4 rounded-xl font-semibold hover:bg-primary/90 transition-colors">
+                    Enviar instrucciones
+                </button>
+                
+                <div class="text-center">
+                    <p class="text-sm text-gray-600 dark:text-gray-400">
+                        ¿Recordaste tu contraseña? 
+                        <span onclick="showScreen('login')" class="text-primary cursor-pointer font-semibold">Inicia sesión</span>
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Success message (hidden by default) -->
+            <div id="recovery-success" class="hidden w-full max-w-sm p-4 bg-green-100 dark:bg-green-900/20 rounded-lg border border-green-300 dark:border-green-700">
+                <div class="flex items-center space-x-2">
+                    <span class="material-symbols-outlined text-green-600 dark:text-green-400">check_circle</span>
+                    <p class="text-green-800 dark:text-green-200 text-sm font-medium">¡Instrucciones enviadas! Revisa tu correo electrónico.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PANTALLA 16: COMUNIDAD/GRUPOS -->
+    <div id="comunidad-grupos" class="screen hidden relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden" style="background-color: #F8F9FA;">
+        <!-- Top App Bar -->
+        <div class="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between sticky top-0 z-10 border-b border-gray-200 dark:border-gray-700">
+            <div class="flex size-12 shrink-0 items-center">
+            </div>
+            <h2 class="text-gray-900 dark:text-white text-xl font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Comunidad</h2>
+            <div class="flex w-12 items-center justify-end">
+                <button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 w-10 bg-transparent text-gray-900 dark:text-white">
+                    <span class="material-symbols-outlined text-2xl">search</span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Tabs -->
+        <div class="pb-3 bg-background-light dark:bg-background-dark sticky top-[70px] z-10">
+            <div class="flex border-b border-gray-200 dark:border-gray-700 px-4 gap-8">
+                <a onclick="switchCommunityTab('mis-grupos')" id="tab-mis-grupos" class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-gray-600 dark:text-gray-400 pb-[13px] pt-4 flex-1 cursor-pointer" href="#">
+                    <p class="text-sm font-bold leading-normal">Mis grupos</p>
+                </a>
+                <a onclick="switchCommunityTab('descubrir')" id="tab-descubrir" class="flex flex-col items-center justify-center border-b-[3px] border-b-community-primary text-gray-900 dark:text-white pb-[13px] pt-4 flex-1 cursor-pointer" href="#">
+                    <p class="text-sm font-bold leading-normal">Descubrir</p>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Filter Button -->
+        <div class="flex px-4 pt-4 pb-2 justify-end">
+            <button onclick="toggleCommunityFilter()" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-9 px-4 bg-community-primary/10 text-gray-900 dark:text-white gap-2 text-sm font-bold leading-normal">
+                <span class="material-symbols-outlined text-lg">tune</span>
+                <span class="truncate">Filtros</span>
+            </button>
+        </div>
+        
+        <main class="flex-grow pb-24" id="community-content">
+            <!-- Content will be populated by JavaScript -->
+        </main>
+        
+        <!-- Bottom Tab Bar -->
+        <div class="fixed bottom-0 left-0 right-0 h-20 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 flex justify-around items-center px-2">
+            <a onclick="showScreen('feed-principal')" class="flex flex-col items-center justify-center text-gray-600 dark:text-gray-400 w-1/5 cursor-pointer">
+                <span class="material-symbols-outlined text-2xl">home</span>
+                <span class="text-xs mt-1">Inicio</span>
+            </a>
+            <a onclick="showScreen('explorar-actividades')" class="flex flex-col items-center justify-center text-gray-600 dark:text-gray-400 w-1/5 cursor-pointer">
+                <span class="material-symbols-outlined text-2xl">spa</span>
+                <span class="text-xs mt-1">Recursos</span>
+            </a>
+            <a class="flex flex-col items-center justify-center text-community-primary w-1/5 cursor-pointer">
+                <span class="material-symbols-outlined text-2xl">groups</span>
+                <span class="text-xs font-bold mt-1">Comunidad</span>
+            </a>
+            <a onclick="showScreen('lista-conversaciones')" class="flex flex-col items-center justify-center text-gray-600 dark:text-gray-400 w-1/5 cursor-pointer">
+                <span class="material-symbols-outlined text-2xl">chat_bubble</span>
+                <span class="text-xs mt-1">Chat</span>
+            </a>
+            <a onclick="showScreen('perfil-usuario')" class="flex flex-col items-center justify-center text-gray-600 dark:text-gray-400 w-1/5 cursor-pointer">
+                <span class="material-symbols-outlined text-2xl">person</span>
+                <span class="text-xs mt-1">Perfil</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- PANTALLA 17: DETALLE DE ACTIVIDAD -->
+    <div id="detalle-actividad" class="screen hidden relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden" style="background-color: #F9F9F9;">
+        <div class="fixed top-0 left-0 right-0 z-20">
+            <div class="flex items-center p-4">
+                <button onclick="showScreen('explorar-actividades')" class="flex size-10 items-center justify-center rounded-full bg-black/30 text-white backdrop-blur-sm">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                </button>
+            </div>
+        </div>
+        
+        <div class="absolute top-0 left-0 right-0 h-80 w-full bg-center bg-no-repeat bg-cover" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA2FobBd0nd_eOeSxHABZTbGV-tNLIwCk28ND29gY3ZYfOXNOiZeMpsGqJ-WXuZ5Jly-XAC9A9A31xaZQrCew4GH4Cy3kkejNSt1dckRlN8gXhQLdI3JBXNq3_UOcukrKvFBFAL8T6C0NDspjPUwqfLp3knDkj0t1W6P4YTmTGvI7WeGrJLFY5cAsGpCxIc8tpksyfu087HXFGceLX3e-STeEVGft8HsyxtaHZgIRyep7JXPmHFid2d0h5geDBejk9wttt1Oh39m3U");'></div>
+        
+        <div class="relative mt-64 flex-grow rounded-t-xl bg-background-light dark:bg-background-dark pb-32">
+            <div class="p-4 pt-6">
+                <h1 class="text-gray-900 dark:text-white tracking-tight text-3xl font-bold leading-tight">Taller de Mindfulness y Reducción de Estrés</h1>
+                <div class="mt-3 flex items-center gap-2">
+                    <p class="text-gray-900 dark:text-white text-base font-medium">Centro Bienestar Juvenil</p>
+                    <span class="material-symbols-outlined text-activity-secondary text-lg">verified</span>
+                </div>
+                <div class="mt-1 flex items-center gap-2">
+                    <div class="flex items-center">
+                        <span class="material-symbols-outlined text-activity-secondary text-lg">star</span>
+                        <span class="material-symbols-outlined text-activity-secondary text-lg">star</span>
+                        <span class="material-symbols-outlined text-activity-secondary text-lg">star</span>
+                        <span class="material-symbols-outlined text-activity-secondary text-lg">star</span>
+                        <span class="material-symbols-outlined text-activity-secondary text-lg">star_half</span>
+                    </div>
+                    <p class="text-sm text-gray-700 dark:text-gray-300">4.8 (120 reseñas)</p>
+                </div>
+            </div>
+            
+            <div class="px-4">
+                <div class="h-px w-full bg-gray-200 dark:bg-gray-700"></div>
+            </div>
+            
+            <div class="p-4">
+                <h3 class="text-gray-900 dark:text-white text-lg font-bold leading-tight">Sobre esta actividad</h3>
+                <p id="activity-description" class="mt-2 text-gray-700 dark:text-gray-300 text-base leading-relaxed">
+                    Descubre técnicas de mindfulness y meditación para manejar el estrés diario, mejorar tu concentración y encontrar un mayor equilibrio emocional. Este taller práctico está diseñado para jóvenes que buscan herramientas para...
+                </p>
+                <button onclick="toggleActivityDescription()" id="read-more-btn" class="mt-1 font-semibold text-activity-primary">Leer más</button>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-4 px-4">
+                <div class="rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-4">
+                    <div class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-activity-primary">location_on</span>
+                        <h4 class="font-semibold text-gray-900 dark:text-white">Dirección</h4>
+                    </div>
+                    <p class="mt-2 text-sm text-gray-700 dark:text-gray-300">Av. Siempre Viva 742, CDMX</p>
+                    <div class="mt-3 h-20 w-full rounded bg-center bg-cover" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDYESx1c8XMsQaUglL1f26c0LnSGXk_IcaGHk0nHoF5eRJwaTD93S_Aq865C_ELbUQQDQcwze7p0LbSbgLOm8KgYZcJJXjeuaTX5VB1lNNKRU96RAxXxOgslc2EuMXyiZTjQR2-AbvMU7Ihy27kzSNIb32TgkQZIdq6jUvHqa0V-lU59q67k6vrhMK9TBAvqGOf-R-K0do2DtjRafY_DhceLmoaDY-cja3bW6FV5Jm4byfVRxGF1YX4mzDJyBNaKiymyTsgfQ5TrPw');"></div>
+                </div>
+                <div class="rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-4">
+                    <div class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-activity-primary">schedule</span>
+                        <h4 class="font-semibold text-gray-900 dark:text-white">Horarios</h4>
+                    </div>
+                    <p class="mt-2 text-sm text-gray-700 dark:text-gray-300">Lunes y Miércoles 6:00 PM - 7:30 PM</p>
+                </div>
+                <div class="rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-4">
+                    <div class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-activity-primary">sell</span>
+                        <h4 class="font-semibold text-gray-900 dark:text-white">Costo</h4>
+                    </div>
+                    <p class="mt-2 text-sm font-semibold text-green-600">Gratuito</p>
+                </div>
+                <div class="rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-4">
+                    <div class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-activity-primary">escalator_warning</span>
+                        <h4 class="font-semibold text-gray-900 dark:text-white">Edad</h4>
+                    </div>
+                    <p class="mt-2 text-sm text-gray-700 dark:text-gray-300">15 - 25 años</p>
+                </div>
+            </div>
+            
+            <div class="px-4 pt-6">
+                <div class="h-px w-full bg-gray-200 dark:border-gray-700"></div>
+            </div>
+            
+            <div class="p-4">
+                <h3 class="text-gray-900 dark:text-white text-lg font-bold leading-tight">Lo que otros jóvenes dicen</h3>
+                <div class="mt-4 space-y-4">
+                    <div class="rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-4">
+                        <div class="flex items-center gap-3">
+                            <img class="h-10 w-10 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDu02nAQjO9l7i5pISO6s4Z303L7NhHAD5Q-zFir3O8J9w3w3NonWscpMM6TlLLc9IxgljIb4Ple1qOx2a4hXIItlrCXQ5YRO16h2JfvFwMlmhNdOiORE-5X3Fe3OU_t2rzyRPNl86JZcXvqXvxEmcoeiPQyIXYG4dy4EP8ppDY4vxxNrejpl6bEZuvjiguqbBAmGsm_2pfvBd4q70ufniC3LSQbS45kJ2W4qhtlIePQiMjDpUlQY5hsTYdN-lherbGBdutZsOUm7E"/>
+                            <div>
+                                <p class="font-semibold text-gray-900 dark:text-white">Ana Sofía R.</p>
+                                <div class="flex items-center">
+                                    <span class="material-symbols-outlined text-activity-secondary text-sm">star</span>
+                                    <span class="material-symbols-outlined text-activity-secondary text-sm">star</span>
+                                    <span class="material-symbols-outlined text-activity-secondary text-sm">star</span>
+                                    <span class="material-symbols-outlined text-activity-secondary text-sm">star</span>
+                                    <span class="material-symbols-outlined text-activity-secondary text-sm">star</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="mt-3 text-gray-700 dark:text-gray-300 text-sm">"¡Increíble! Me ha ayudado muchísimo a concentrarme en mis estudios y a sentirme más tranquila. Lo recomiendo 100%."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="fixed bottom-0 left-0 right-0 z-20 border-t border-gray-200 dark:border-gray-700 bg-white/80 dark:bg-gray-800/80 p-4 backdrop-blur-sm">
+            <div class="flex items-center gap-3">
+                <button onclick="registrarseActividad()" class="flex-grow rounded-full bg-activity-primary py-3 text-center font-bold text-white">Me interesa</button>
+                <button onclick="shareActivity()" class="flex h-12 w-12 items-center justify-center rounded-full border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white">
+                    <span class="material-symbols-outlined">share</span>
+                </button>
+                <button class="flex h-12 w-12 items-center justify-center rounded-full border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-400">
+                    <span class="material-symbols-outlined">flag</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PANTALLA 18: NOTIFICACIONES -->
+    <div id="notificaciones" class="screen hidden relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden bg-background-light dark:bg-background-dark">
+        <header class="sticky top-0 z-10 flex h-16 w-full items-center justify-between bg-white dark:bg-gray-800 px-4 shadow-sm border-b border-gray-200 dark:border-gray-700">
+            <div onclick="showScreen('feed-principal')" class="cursor-pointer">
+                <span class="material-symbols-outlined text-gray-600 dark:text-gray-300">arrow_back</span>
+            </div>
+            <h1 class="text-lg font-bold text-gray-900 dark:text-white">Notificaciones</h1>
+            <div class="cursor-pointer">
+                <span class="material-symbols-outlined text-gray-600 dark:text-gray-300">more_vert</span>
+            </div>
+        </header>
+        
+        <div class="flex-1 overflow-y-auto">
+            <div class="space-y-1" id="notifications-container">
+                <!-- Notifications will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- PANTALLA 15: CONFIGURACIÓN DE PRIVACIDAD -->
+    <div id="configuracion-privacidad" class="screen hidden bg-background-light dark:bg-background-dark font-display text-text-primary-light dark:text-text-primary-dark relative flex h-auto min-h-screen w-full flex-col group/design-root">
+        <div class="sticky top-0 z-10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm">
+            <div class="flex items-center p-4 pb-3 justify-between">
+                <div onclick="showScreen('ajustes-generales')" class="flex size-8 shrink-0 items-center justify-center text-primary cursor-pointer">
+                    <span class="material-symbols-outlined text-2xl">arrow_back_ios_new</span>
+                </div>
+                <h1 class="text-lg font-bold">Privacidad y datos</h1>
+                <div class="size-8"></div>
+            </div>
+        </div>
+        
+        <main class="flex-1 overflow-y-auto px-4 pb-24">
+            <div class="space-y-6">
+                <!-- Visibilidad del perfil -->
+                <div>
+                    <h2 class="text-text-secondary-light dark:text-text-secondary-dark text-xs uppercase font-medium px-4 pb-2">Visibilidad</h2>
+                    <div class="bg-item-bg-light dark:bg-item-bg-dark rounded-lg">
+                        <div class="flex items-center gap-4 px-4 min-h-12 justify-between">
+                            <div class="flex items-center gap-4">
+                                <span class="material-symbols-outlined text-primary text-xl">visibility</span>
+                                <p class="text-base font-normal">Perfil público</p>
+                            </div>
+                            <div class="relative inline-block w-11 mr-2 align-middle select-none transition duration-200 ease-in">
+                                <input checked class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" id="toggle-public-profile" type="checkbox"/>
+                                <label class="toggle-label block overflow-hidden h-6 rounded-full bg-primary-light cursor-pointer" for="toggle-public-profile"></label>
+                            </div>
+                        </div>
+                        <hr class="border-divider-light dark:border-divider-dark ml-14"/>
+                        <div class="flex items-center gap-4 px-4 min-h-12 justify-between">
+                            <div class="flex items-center gap-4">
+                                <span class="material-symbols-outlined text-primary text-xl">location_on</span>
+                                <p class="text-base font-normal">Mostrar ubicación</p>
+                            </div>
+                            <div class="relative inline-block w-11 mr-2 align-middle select-none transition duration-200 ease-in">
+                                <input class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" id="toggle-location" type="checkbox"/>
+                                <label class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 dark:bg-gray-600 cursor-pointer" for="toggle-location"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Datos -->
+                <div>
+                    <h2 class="text-text-secondary-light dark:text-text-secondary-dark text-xs uppercase font-medium px-4 pb-2">Datos</h2>
+                    <div class="bg-item-bg-light dark:bg-item-bg-dark rounded-lg">
+                        <div class="flex items-center gap-4 px-4 min-h-12 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800">
+                            <span class="material-symbols-outlined text-primary text-xl">download</span>
+                            <p class="text-base font-normal flex-1 truncate">Descargar mis datos</p>
+                            <span class="material-symbols-outlined text-text-secondary-light dark:text-text-secondary-dark">chevron_right</span>
+                        </div>
+                        <hr class="border-divider-light dark:border-divider-dark ml-14"/>
+                        <div class="flex items-center gap-4 px-4 min-h-12 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800">
+                            <span class="material-symbols-outlined text-destructive text-xl">delete_forever</span>
+                            <p class="text-base font-normal flex-1 truncate text-destructive">Eliminar cuenta</p>
+                            <span class="material-symbols-outlined text-text-secondary-light dark:text-text-secondary-dark">chevron_right</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Información -->
+                <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border border-blue-200 dark:border-blue-700">
+                    <div class="flex items-start space-x-3">
+                        <span class="material-symbols-outlined text-blue-600 dark:text-blue-400 text-xl">info</span>
+                        <div class="flex-1">
+                            <h3 class="text-sm font-semibold text-blue-800 dark:text-blue-200">Tu privacidad es importante</h3>
+                            <p class="text-xs text-blue-700 dark:text-blue-300 mt-1">
+                                Todos tus datos están encriptados y nunca compartimos información personal sin tu consentimiento.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Estado global de la aplicación
+        const appState = {
+            currentScreen: 'splash-screen',
+            user: null,
+            selectedInterests: [],
+            currentCommunityTab: 'descubrir',
+            userGroups: [],
+            activities: [
+                {
+                    id: 1,
+                    title: "Taller de Arte Urbano",
+                    organizer: "Organización XYZ",
+                    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCUBDo-nDacZmtPHQl7URyTzXm1Ei0t07EtjZYzq3efzj94dxB-r-Hm1vW-KFFGf5VM-cpcBgZJnI4YcFyECbvgbEW7zn4XZUhHyjBfwvYftuALeP-MWiWnYvt3zRteTDsAbal2Q1SEK8-uzz0uc4bCgzXdJzTC2DmbEMgdowrARq1yErUiHosekuekZIwpBHaBN_-SSbW_0xXD3892HpmZxwrvC8fZFqrtYdq2ybZcWxdnQD6zV6LgiXzuD8XOa09g5LeJH23BZsU",
+                    location: "A 2.3 km",
+                    rating: 4.5,
+                    reviews: 24,
+                    price: "Gratis",
+                    ageRange: "16-25 años",
+                    category: "Arte"
+                },
+                {
+                    id: 2,
+                    title: "Taller de Mindfulness",
+                    organizer: "Centro Bienestar",
+                    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuA2FobBd0nd_eOeSxHABZTbGV-tNLIwCk28ND29gY3ZYfOXNOiZeMpsGqJ-WXuZ5Jly-XAC9A9A31xaZQrCew4GH4Cy3kkejNSt1dckRlN8gXhQLdI3JBXNq3_UOcukrKvFBFAL8T6C0NDspjPUwqfLp3knDkj0t1W6P4YTmTGvI7WeGrJLFY5cAsGpCxIc8tpksyfu087HXFGceLX3e-STeEVGft8HsyxtaHZgIRyep7JXPmHFid2d0h5geDBejk9wttt1Oh39m3U",
+                    location: "A 1.5 km", 
+                    rating: 4.8,
+                    reviews: 120,
+                    price: "Gratis",
+                    ageRange: "15-25 años",
+                    category: "Bienestar"
+                },
+                {
+                    id: 3,
+                    title: "Club de Lectura Juvenil",
+                    organizer: "Biblioteca Central",
+                    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBomDQQaEWSOmhwmRUP_lT9cA0IbubQKTHBIov5tsGYd4gEwzTU0_eUDpF_5Z95z2LU41XoOi3fi8JpOwNjoOIzUl2bhvhlubhv-JGG6lOgYw2k9wNCKJDWz0uGPuPzmoB4hue5SHFm9JKcbQq5VT2yobAJttALpoD_yONiSrbnpb63sTkTc0auvJSE9B9RjY4i97TZ6Y6rZycEY2owm4cdgENSHHv8sIOoiVL0dE7wFOQDMHcTFG5NCbIyj476wF1BawV3mJqQBRc",
+                    location: "A 3.1 km",
+                    rating: 4.3,
+                    reviews: 45,
+                    price: "Gratis",
+                    ageRange: "16-30 años",
+                    category: "Educación"
+                }
+            ],
+            groups: [
+                {
+                    id: 1,
+                    name: "Jóvenes Creativos TGZ",
+                    members: 47,
+                    description: "Un espacio para explorar tu creatividad a través del arte, la música y la escritura. ¡Únete y comparte tu talento!",
+                    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDi30aU0tBGRltohPMiP_NHpsIsnBiOiLwCxWnHNEGkR7JxrQeT6uAFrEG15B8E0U7pGStSTWuXMMrFk7IwcXLeRALJ3IzNwaCp19RFakUWeBW84wKMQnPuinrHrUlL08k5Ymj493zfyv8OaC80G9n8_a_2dGS7s_4OAYnj6xadJEiKIEcrYK3BA6-weMhIGsNl89nqXjdDQyJ2xXqbj5dCc5CsUjJ6AkWWCGcvOJePqsF6bCzPXrppxA05VZolphVt4EsN5vlbIUc",
+                    tags: ["Arte", "16-25 años", "Presencial"],
+                    joined: false
+                },
+                {
+                    id: 2,
+                    name: "Apoyo y Escucha Activa",
+                    members: 112,
+                    description: "Un lugar seguro para hablar de lo que sientes, sin juicios. Compartimos experiencias y aprendemos juntos.",
+                    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAyEgyq8NNciiWHroF0X8rA_h-uNiej6DwvC1odxgviCmemRC4wMUkSJo_Wb5_KRISdXhA67y-WCA8TEwca_z2qDm7oanK1IkXAHIVOgo22WK8VWad7p2nhllaFSkqb4obPReWeez6yPxBxfs5WfY3AvVT0qKTkxbhL5bNb99VN1SSAxxS7AweSZpEMk-q981COCqFyDzUEYq0pt3MAb0jZtznmt3zs8gWQ24kss7XIhyanCxBBfDkGDRwmSNGKIrla7bDHUNZ7KV4",
+                    tags: ["Salud Mental", "18-28 años", "En línea"],
+                    joined: true
+                },
+                {
+                    id: 3,
+                    name: "Mente y Cuerpo en Equilibrio",
+                    members: 89,
+                    description: "Exploramos el yoga, la meditación y el ejercicio como herramientas para el bienestar emocional y físico.",
+                    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuD7ILsfO0qcxUbQ4ge9qtVnbYZLpP6IQl41YkZ9QS8Mv6UXPL96tS4eGHWzrmp2GY3y7Jwn5se2hYdUIuTDSzTVL6o3tP391pjmEaZtHAKJ_Xlw1w1TMAbK4yOS8PNcLfsCjdwhFuo4hW6JN3sbDj2KeowzbSOT0Q9518c5saR0WPL52yj5dzDBCuR44Pwwm7s-lvvwphB8aZwzSDsIDqc_9uFQK-L0XqiM2msVpD6oJqxxdZxI1mp0lpY94gBFTu3E9_SHCogeO34",
+                    tags: ["Bienestar", "Todas las edades", "Presencial"],
+                    joined: false
+                }
+            ],
+            notifications: [
+                {
+                    id: 1,
+                    type: 'like',
+                    user: 'MariposaAzul',
+                    avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBy7tajPGHD1ULb4mDsvkWZS__i_S2KAEQEP0Xrios_de3JC0kkOekW0jWP08bc0yybI8tjYztYMqsIHiWnV4SbSelFK_OJje_Z1_ju5zWUDdftRG5ijJPOHaSKcPMlRm419Sq4rKT9eUPL_EYfdSsfXqKBCOv0NUhAR686Y_-Yu59jhcLDoTmOkpVo6I6m-NBz_65-Y1zLdXULQCg2XncrjM1l09mBvHLxoNtr4HZmk4PSw74fUSCCARrtx2fjHXeF3OJgvdd03Sw',
+                    message: 'le gustó tu publicación',
+                    time: '5 min',
+                    unread: true
+                },
+                {
+                    id: 2,
+                    type: 'comment',
+                    user: 'LoboSolitario',
+                    avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBPN9NRpHX4RZaBN-ftf43XgAtDyetoCV9fFvBz0hpFEeNmGJ5IVLCBwl16cTd40-CCpei8j3bkiWuI10LDG89HaROCjsn1XNDihokdq5-5CyqdDG422HKqo2XeHpWcdwUQeWAjjo-2HhN4VDHBE_jOFrg_SAuxyW7JBP-11DjBSUpgbv-thxr1Yt5lXMDKoCnq13ALoO6ltaXwc3GsXxYMxaQ60dHWejU6_stYNRlm_28PjgUyeRqDf49WYj6ZGnletsnp3rVDRD8',
+                    message: 'comentó tu publicación',
+                    time: '1h',
+                    unread: true
+                },
+                {
+                    id: 3,
+                    type: 'group',
+                    user: 'Apoyo y Escucha Activa',
+                    avatar: null,
+                    message: 'Nueva actividad en el grupo',
+                    time: '2h',
+                    unread: false
+                }
+            ],
+            posts: [
+                {
+                    id: 1,
+                    user: "GatoAnónimo7",
+                    avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuAK2N-lAcMlIEkXAFn4W9YnU9Ipynnjq2CXtvNqZuz8NZpDTvemgHbovgYUGr_0Kt6p5vPNByVrD9yzD5WOhJUQ810X5TAy8eKQnXxskz_kUYxx6rm7rI0jA4At4wyJWemRZpD3LBgA5AimVFFcbh6fkEOUfPX_02e45ILzeTqxJqlC9RjXSEKajL9ILvVwTSWkQWqq1OD6ThIGGNbG5cyp2NYSHhWdunvf5Ft4KoO2qe_BmjjlrHLTrEk4F074a20x17l4784EfEw",
+                    time: "hace 2h",
+                    content: "A veces me siento un poco solo, pero recordar los buenos momentos con amigos me ayuda a seguir adelante. ¿A ustedes qué les funciona?",
+                    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBomDQQaEWSOmhwmRUP_lT9cA0IbubQKTHBIov5tsGYd4gEwzTU0_eUDpF_5Z95z2LU41XoOi3fi8JpOwNjoOIzUl2bhvhlubhv-JGG6lOgYw2k9wNCKJDWz0uGPuPzmoB4hue5SHFm9JKcbQq5VT2yobAJttALpoD_yONiSrbnpb63sTkTc0auvJSE9B9RjY4i97TZ6Y6rZycEY2owm4cdgENSHHv8sIOoiVL0dE7wFOQDMHcTFG5NCbIyj476wF1BawV3mJqQBRc",
+                    likes: 15,
+                    comments: [
+                        {
+                            user: "MariposaAzul",
+                            content: "¡Totalmente! A mí me ayuda mucho escuchar música y caminar",
+                            time: "hace 1h"
+                        }
+                    ],
+                    location: "Tuxtla, Chiapas",
+                    category: "Amigos",
+                    liked: false
+                },
+                {
+                    id: 2,
+                    user: "MariposaAzul",
+                    avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuBy7tajPGHD1ULb4mDsvkWZS__i_S2KAEQEP0Xrios_de3JC0kkOekW0jWP08bc0yybI8tjYztYMqsIHiWnV4SbSelFK_OJje_Z1_ju5zWUDdftRG5ijJPOHaSKcPMlRm419Sq4rKT9eUPL_EYfdSsfXqKBCOv0NUhAR686Y_-Yu59jhcLDoTmOkpVo6I6m-NBz_65-Y1zLdXULQCg2XncrjM1l09mBvHLxoNtr4HZmk4PSw74fUSCCARrtx2fjHXeF3OJgvdd03Sw",
+                    time: "hace 5h",
+                    content: "¡Pequeña victoria del día! Terminé un proyecto que me estaba costando mucho. Celebrando con un buen libro y un té. ✨",
+                    likes: 28,
+                    comments: [
+                        {
+                            user: "LoboSolitario",
+                            content: "¡Felicidades! 🎉",
+                            time: "hace 4h"
+                        }
+                    ],
+                    location: "Oaxaca, Oaxaca",
+                    category: "Público",
+                    liked: false
+                }
+            ],
+            conversations: [
+                {
+                    id: 1,
+                    name: "Coach IA",
+                    avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuBz7VzcLZSSzuDZ5z0cvv9tenAZaxDA1dARn9t7pd0LshzQRsTqdo0ZsMadGB7LFbni2R6fu1lAbFtemxZZJSjgfEjn3q-wnXw-RTkn-MKQNU_g4Dq6LZsrF0DZxqxs2tGzrDyOtbotscKWsu_3vQBai9_s3hfW702-HTtSc4nG2mvsEWg_B1ZyOLe71ekfMuIVxI1u2IG1sq24px9T-N24YP1nvVem7WbVH50xOuiWLMAcFp9ywsQVV9QYsHXKLxrjNJ9VJQmv_Bg",
+                    lastMessage: "¿Cómo te sientes hoy? Estoy aquí para...",
+                    time: "ahora",
+                    unread: true,
+                    online: true
+                },
+                {
+                    id: 2,
+                    name: "Grupo de Apoyo",
+                    avatar: null,
+                    isGroup: true,
+                    lastMessage: "MariposaAzul: ¡Qué buen día he tenido!",
+                    time: "2h",
+                    unread: false,
+                    online: false
+                }
+            ]
+        };
+
+        // Funciones de navegación
+        function showScreen(screenId) {
+            // Ocultar todas las pantallas
+            document.querySelectorAll('.screen').forEach(screen => {
+                screen.classList.add('hidden');
+                screen.classList.remove('active');
+            });
+            
+            // Mostrar la pantalla solicitada
+            const targetScreen = document.getElementById(screenId);
+            if (targetScreen) {
+                targetScreen.classList.remove('hidden');
+                targetScreen.classList.add('active');
+                appState.currentScreen = screenId;
+            }
+        }
+
+        // Función de splash screen con animación
+        function startSplashAnimation() {
+            const loadingBar = document.getElementById('loading-bar');
+            let width = 0;
+            const interval = setInterval(() => {
+                width += Math.random() * 15;
+                if (width >= 100) {
+                    width = 100;
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        showScreen('welcome-screen');
+                    }, 500);
+                }
+                loadingBar.style.width = width + '%';
+            }, 200);
+        }
+
+        // Función de toggle de visibilidad de contraseña
+        function togglePasswordVisibility(inputId) {
+            const input = document.getElementById(inputId);
+            const icon = input.parentElement.querySelector('.material-symbols-outlined');
+            
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.textContent = 'visibility_off';
+            } else {
+                input.type = 'password';
+                icon.textContent = 'visibility';
+            }
+        }
+
+        // Función de login
+        function loginUser() {
+            const username = document.getElementById('login-username').value;
+            const password = document.getElementById('login-password').value;
+            const errorDiv = document.getElementById('login-error');
+            
+            if (!username || !password) {
+                errorDiv.textContent = 'Por favor completa todos los campos';
+                errorDiv.classList.remove('hidden');
+                return;
+            }
+            
+            // Simulación de login
+            if (username === 'demo' && password === 'demo123') {
+                appState.user = {
+                    username: username,
+                    name: 'Usuario Demo',
+                    email: 'demo@jovsaludable.com'
+                };
+                localStorage.setItem('user', JSON.stringify(appState.user));
+                showScreen('feed-principal');
+            } else {
+                errorDiv.classList.remove('hidden');
+            }
+        }
+
+        // Función de selección de intereses
+        function toggleInterest(element) {
+            const interestText = element.querySelector('span:last-child').textContent;
+            
+            if (element.classList.contains('border-primary')) {
+                // Deseleccionar
+                element.classList.remove('border-primary', 'bg-primary/10');
+                element.classList.add('border-gray-200');
+                appState.selectedInterests = appState.selectedInterests.filter(i => i !== interestText);
+            } else {
+                // Seleccionar
+                element.classList.add('border-primary', 'bg-primary/10');
+                element.classList.remove('border-gray-200');
+                appState.selectedInterests.push(interestText);
+            }
+            
+            updateInterestCounter();
+        }
+
+        function updateInterestCounter() {
+            const counter = document.getElementById('interest-counter');
+            const button = document.getElementById('complete-registration');
+            const count = appState.selectedInterests.length;
+            
+            counter.textContent = `${count} de 3 seleccionados`;
+            
+            if (count >= 3) {
+                button.disabled = false;
+                button.classList.remove('bg-gray-300', 'text-gray-500', 'cursor-not-allowed');
+                button.classList.add('bg-primary', 'text-white');
+            } else {
+                button.disabled = true;
+                button.classList.add('bg-gray-300', 'text-gray-500', 'cursor-not-allowed');
+                button.classList.remove('bg-primary', 'text-white');
+            }
+        }
+
+        function completeRegistration() {
+            if (appState.selectedInterests.length >= 3) {
+                const userData = {
+                    username: document.getElementById('registro-username').value,
+                    email: document.getElementById('registro-email').value,
+                    interests: appState.selectedInterests
+                };
+                
+                appState.user = userData;
+                localStorage.setItem('user', JSON.stringify(userData));
+                showToast('¡Registro completado exitosamente!');
+                showScreen('feed-principal');
+            }
+        }
+
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'fixed top-4 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50';
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                document.body.removeChild(toast);
+            }, 3000);
+        }
+
+        // Validación de contraseña en tiempo real
+        document.addEventListener('DOMContentLoaded', function() {
+            const passwordInput = document.getElementById('registro-password');
+            if (passwordInput) {
+                passwordInput.addEventListener('input', function() {
+                    const password = this.value;
+                    const lengthCheck = document.getElementById('length-check');
+                    const numberCheck = document.getElementById('number-check');
+                    
+                    // Verificar longitud
+                    if (password.length >= 8) {
+                        lengthCheck.textContent = 'check_circle';
+                        lengthCheck.classList.remove('text-gray-400');
+                        lengthCheck.classList.add('text-green-500');
+                    } else {
+                        lengthCheck.textContent = 'radio_button_unchecked';
+                        lengthCheck.classList.remove('text-green-500');
+                        lengthCheck.classList.add('text-gray-400');
+                    }
+                    
+                    // Verificar número
+                    if (/\d/.test(password)) {
+                        numberCheck.textContent = 'check_circle';
+                        numberCheck.classList.remove('text-gray-400');
+                        numberCheck.classList.add('text-green-500');
+                    } else {
+                        numberCheck.textContent = 'radio_button_unchecked';
+                        numberCheck.classList.remove('text-green-500');
+                        numberCheck.classList.add('text-gray-400');
+                    }
+                });
+            }
+            
+            // Verificar disponibilidad de usuario
+            const usernameInput = document.getElementById('registro-username');
+            if (usernameInput) {
+                usernameInput.addEventListener('input', function() {
+                    const username = this.value;
+                    const check = document.getElementById('username-check');
+                    
+                    if (username.length >= 3) {
+                        setTimeout(() => {
+                            check.classList.remove('hidden');
+                        }, 500);
+                    } else {
+                        check.classList.add('hidden');
+                    }
+                });
+            }
+        });
+
+        // Funciones para las nuevas pantallas
+        
+        // Funciones de comunidad
+        function switchCommunityTab(tab) {
+            appState.currentCommunityTab = tab;
+            const tabMisGrupos = document.getElementById('tab-mis-grupos');
+            const tabDescubrir = document.getElementById('tab-descubrir');
+            
+            if (tab === 'mis-grupos') {
+                tabMisGrupos.classList.add('border-b-community-primary', 'text-gray-900');
+                tabMisGrupos.classList.remove('border-b-transparent', 'text-gray-600');
+                tabDescubrir.classList.add('border-b-transparent', 'text-gray-600');
+                tabDescubrir.classList.remove('border-b-community-primary', 'text-gray-900');
+            } else {
+                tabDescubrir.classList.add('border-b-community-primary', 'text-gray-900');
+                tabDescubrir.classList.remove('border-b-transparent', 'text-gray-600');
+                tabMisGrupos.classList.add('border-b-transparent', 'text-gray-600');
+                tabMisGrupos.classList.remove('border-b-community-primary', 'text-gray-900');
+            }
+            
+            generateCommunityContent();
+        }
+        
+        function generateCommunityContent() {
+            const container = document.getElementById('community-content');
+            if (!container) return;
+            
+            container.innerHTML = '';
+            
+            const groupsToShow = appState.currentCommunityTab === 'mis-grupos' 
+                ? appState.groups.filter(g => g.joined)
+                : appState.groups;
+            
+            if (groupsToShow.length === 0) {
+                container.innerHTML = `
+                    <div class="flex flex-col items-center justify-center p-8 text-center">
+                        <span class="material-symbols-outlined text-gray-400 text-6xl mb-4">groups</span>
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                            ${appState.currentCommunityTab === 'mis-grupos' ? 'No te has unido a ningún grupo' : 'No hay grupos disponibles'}
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-400">
+                            ${appState.currentCommunityTab === 'mis-grupos' 
+                                ? 'Explora la pestaña Descubrir para encontrar grupos que te interesen' 
+                                : 'Vuelve más tarde para ver nuevos grupos'}
+                        </p>
+                    </div>
+                `;
+                return;
+            }
+            
+            groupsToShow.forEach(group => {
+                const groupElement = document.createElement('div');
+                groupElement.className = 'p-4';
+                groupElement.innerHTML = `
+                    <div class="flex flex-col items-stretch justify-start rounded-xl shadow-md bg-white dark:bg-gray-800">
+                        <div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-t-xl" style='background-image: url("${group.image}");'></div>
+                        <div class="flex w-full grow flex-col items-stretch justify-center gap-3 p-4">
+                            <div>
+                                <p class="text-gray-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">${group.name}</p>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm font-normal leading-normal flex items-center gap-1 mt-1">
+                                    <span class="material-symbols-outlined text-base">groups</span> ${group.members} miembros
+                                </p>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300 text-sm font-normal leading-normal line-clamp-2">
+                                ${group.description}
+                            </p>
+                            <div class="flex gap-2 flex-wrap">
+                                ${group.tags.map(tag => `
+                                    <div class="flex h-7 shrink-0 items-center justify-center gap-x-2 rounded-full bg-community-accent/20 px-3">
+                                        <p class="text-community-accent text-xs font-medium">${tag}</p>
+                                    </div>
+                                `).join('')}
+                            </div>
+                            <button onclick="toggleGroupMembership(${group.id})" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 ${group.joined ? 'bg-transparent border border-community-primary text-community-primary' : 'bg-community-primary text-white'} text-sm font-bold leading-normal mt-2 self-end w-full sm:w-auto gap-2">
+                                <span class="truncate">${group.joined ? 'Miembro' : 'Unirse'}</span>
+                                ${group.joined ? '<span class="material-symbols-outlined text-lg">check</span>' : ''}
+                            </button>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(groupElement);
+            });
+        }
+        
+        function toggleGroupMembership(groupId) {
+            const group = appState.groups.find(g => g.id === groupId);
+            if (group) {
+                group.joined = !group.joined;
+                if (group.joined) {
+                    showToast(`¡Te has unido a ${group.name}!`);
+                    appState.userGroups.push(groupId);
+                } else {
+                    showToast(`Has dejado ${group.name}`);
+                    appState.userGroups = appState.userGroups.filter(id => id !== groupId);
+                }
+                generateCommunityContent();
+            }
+        }
+        
+        function toggleCommunityFilter() {
+            showToast('Filtros disponibles: Arte, Salud Mental, Bienestar, Edad');
+        }
+        
+        // Funciones de explorar actividades mejoradas
+        function generateActivitiesContent() {
+            const container = document.querySelector('#explorar-actividades main');
+            if (!container) return;
+            
+            container.innerHTML = '';
+            
+            appState.activities.forEach(activity => {
+                const activityElement = document.createElement('div');
+                activityElement.className = 'w-full';
+                activityElement.innerHTML = `
+                    <div class="flex flex-col items-stretch justify-start rounded-xl bg-white dark:bg-gray-800 shadow-lg overflow-hidden">
+                        <div class="w-full bg-center bg-no-repeat aspect-video bg-cover" style='background-image: url("${activity.image}");'></div>
+                        <div class="flex w-full flex-col items-stretch justify-center gap-4 p-4">
+                            <div>
+                                <p class="text-explore-text-primary dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">${activity.title}</p>
+                                <p class="text-explore-text-secondary dark:text-gray-400 text-base font-normal leading-normal mt-1">${activity.organizer}</p>
+                            </div>
+                            <div class="flex items-center gap-4 text-explore-text-secondary dark:text-gray-400 text-sm">
+                                <div class="flex items-center gap-1">
+                                    <span class="material-symbols-outlined text-base">location_on</span>
+                                    <span>${activity.location}</span>
+                                </div>
+                                <div class="flex items-center gap-1">
+                                    <span class="material-symbols-outlined text-base text-explore-accent-yellow">star</span>
+                                    <span>${activity.rating} (${activity.reviews} reseñas)</span>
+                                </div>
+                            </div>
+                            <div class="flex gap-2 flex-wrap">
+                                <div class="flex h-7 shrink-0 items-center justify-center gap-x-2 rounded-full px-3" style="background-color: rgba(247, 220, 111, 0.2);">
+                                    <p class="text-xs font-semibold" style="color: #F7DC6F;">${activity.price}</p>
+                                </div>
+                                <div class="flex h-7 shrink-0 items-center justify-center gap-x-2 rounded-full px-3" style="background-color: rgba(241, 148, 138, 0.2);">
+                                    <p class="text-xs font-semibold" style="color: #F1948A;">${activity.ageRange}</p>
+                                </div>
+                            </div>
+                            <button onclick="showActivityDetail(${activity.id})" class="flex w-full mt-2 max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-4 text-white text-base font-bold leading-normal" style="background-color: #48C9B0;">
+                                <span class="truncate">Ver más</span>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(activityElement);
+            });
+        }
+        
+        function showActivityDetail(activityId) {
+            showScreen('detalle-actividad');
+        }
+        
+        // Funciones para detalle de actividad
+        function toggleActivityDescription() {
+            const description = document.getElementById('activity-description');
+            const btn = document.getElementById('read-more-btn');
+            
+            if (description.classList.contains('line-clamp-2')) {
+                description.classList.remove('line-clamp-2');
+                description.innerHTML = `
+                    Descubre técnicas de mindfulness y meditación para manejar el estrés diario, mejorar tu concentración y encontrar un mayor equilibrio emocional. Este taller práctico está diseñado para jóvenes que buscan herramientas para desarrollar resiliencia emocional, reducir la ansiedad y cultivar una mentalidad más positiva. 
+                    <br><br>
+                    Durante las sesiones aprenderás:
+                    • Técnicas de respiración consciente
+                    • Meditación guiada para principiantes
+                    • Estrategias para manejar pensamientos negativos
+                    • Ejercicios de relajación muscular progresiva
+                    • Herramientas para crear hábitos saludables
+                    <br><br>
+                    No se requiere experiencia previa. Solo trae ropa cómoda y una mente abierta al aprendizaje.
+                `;
+                btn.textContent = 'Leer menos';
+            } else {
+                description.classList.add('line-clamp-2');
+                description.innerHTML = `
+                    Descubre técnicas de mindfulness y meditación para manejar el estrés diario, mejorar tu concentración y encontrar un mayor equilibrio emocional. Este taller práctico está diseñado para jóvenes que buscan herramientas para...
+                `;
+                btn.textContent = 'Leer más';
+            }
+        }
+        
+        function registrarseActividad() {
+            if (confirm('¿Confirmas tu participación en esta actividad?')) {
+                showToast('¡Registro exitoso! Te enviaremos más detalles por correo.');
+                setTimeout(() => {
+                    showScreen('explorar-actividades');
+                }, 2000);
+            }
+        }
+        
+        function shareActivity() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Taller de Mindfulness - Joven Saludable',
+                    text: 'Descubre técnicas de mindfulness y meditación',
+                    url: window.location.href
+                });
+            } else {
+                navigator.clipboard.writeText(window.location.href);
+                showToast('Enlace copiado al portapapeles');
+            }
+        }
+        
+        // Funciones para crear post mejoradas
+        
+        function selectPostType(type) {
+            selectedPostType = type;
+            const buttons = document.querySelectorAll('.post-type-btn');
+            const imageArea = document.getElementById('image-upload-area');
+            
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-primary/20');
+                btn.classList.add('bg-background-light', 'border', 'border-gray-300');
+                btn.querySelector('p').classList.remove('text-primary');
+                btn.querySelector('p').classList.add('text-gray-700');
+            });
+            
+            event.target.closest('.post-type-btn').classList.add('bg-primary/20');
+            event.target.closest('.post-type-btn').classList.remove('bg-background-light', 'border', 'border-gray-300');
+            event.target.closest('.post-type-btn').querySelector('p').classList.add('text-primary');
+            event.target.closest('.post-type-btn').querySelector('p').classList.remove('text-gray-700');
+            
+            if (type === 'text-image' || type === 'image') {
+                imageArea.classList.remove('hidden');
+            } else {
+                imageArea.classList.add('hidden');
+            }
+        }
+        
+        function publishPost() {
+            const content = document.getElementById('post-content').value;
+            const audience = document.getElementById('audience-selector').value;
+            
+            if (!content.trim()) {
+                showToast('Por favor escribe algo para publicar');
+                return;
+            }
+            
+            const newPost = {
+                id: appState.posts.length + 1,
+                user: appState.user?.username || 'Usuario',
+                avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuBAeZzHjFEJanF1T56Ehe7Y5SwqDmg6e-Bw9NNWR6rQd8Kk1HxCCm6PYl-zGkf-PQeqQZbUTicBVi-w_RlkJeSw4UQq45UOmQSFsPLi4pGEuHnEx8U10JeOHepkyhBX8WKzaRe1I7PmNcfWYbutVeQG1MD4gISUuEvJiQO5y4mekrxxFlqbN5GnGEr_L2PKnXhJdWRYwPhDew1GjDjNlLlgSmYlc6W7EqxerK5CcizbSg_U0aoiqge284KIPeIl_SvtnXvu63GgCIM",
+                time: "ahora",
+                content: content,
+                likes: 0,
+                comments: [],
+                location: "Tu ubicación",
+                category: audience === 'public' ? 'Público' : audience === 'friends' ? 'Amigos' : 'Privado',
+                liked: false,
+                image: selectedPostType.includes('image') ? "https://lh3.googleusercontent.com/aida-public/AB6AXuBomDQQaEWSOmhwmRUP_lT9cA0IbubQKTHBIov5tsGYd4gEwzTU0_eUDpF_5Z95z2LU41XoOi3fi8JpOwNjoOIzUl2bhvhlubhv-JGG6lOgYw2k9wNCKJDWz0uGPuPzmoB4hue5SHFm9JKcbQq5VT2yobAJttALpoD_yONiSrbnpb63sTkTc0auvJSE9B9RjY4i97TZ6Y6rZycEY2owm4cdgENSHHv8sIOoiVL0dE7wFOQDMHcTFG5NCbIyj476wF1BawV3mJqQBRc" : null
+            };
+            
+            appState.posts.unshift(newPost);
+            document.getElementById('post-content').value = '';
+            showToast('¡Publicación creada exitosamente!');
+            showScreen('feed-principal');
+        }
+        
+        // Funciones para notificaciones
+        function generateNotifications() {
+            const container = document.getElementById('notifications-container');
+            if (!container) return;
+            
+            container.innerHTML = '';
+            
+            if (appState.notifications.length === 0) {
+                container.innerHTML = `
+                    <div class="flex flex-col items-center justify-center p-8 text-center">
+                        <span class="material-symbols-outlined text-gray-400 text-6xl mb-4">notifications</span>
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">No hay notificaciones</h3>
+                        <p class="text-gray-600 dark:text-gray-400">Te notificaremos cuando tengas nuevas interacciones</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            appState.notifications.forEach(notification => {
+                const notificationElement = document.createElement('div');
+                notificationElement.className = `flex items-center gap-3 p-4 hover:bg-gray-50 dark:hover:bg-gray-800 cursor-pointer border-b border-gray-100 dark:border-gray-700 ${notification.unread ? 'bg-blue-50 dark:bg-blue-900/20' : ''}`;
+                
+                const avatarHtml = notification.avatar 
+                    ? `<div class="w-12 h-12 bg-center bg-no-repeat aspect-square bg-cover rounded-full" style='background-image: url("${notification.avatar}");'></div>`
+                    : `<div class="w-12 h-12 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full flex items-center justify-center">
+                         <span class="material-symbols-outlined text-white">${notification.type === 'group' ? 'groups' : 'notifications'}</span>
+                       </div>`;
+                
+                notificationElement.innerHTML = `
+                    ${avatarHtml}
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-center justify-between">
+                            <p class="text-sm font-semibold text-gray-900 dark:text-white truncate">
+                                <span class="font-normal">${notification.user}</span> ${notification.message}
+                            </p>
+                            <span class="text-xs text-gray-500 dark:text-gray-400">${notification.time}</span>
+                        </div>
+                    </div>
+                    ${notification.unread ? '<div class="w-2 h-2 bg-primary rounded-full"></div>' : ''}
+                `;
+                
+                notificationElement.addEventListener('click', () => {
+                    notification.unread = false;
+                    generateNotifications();
+                    updateNotificationBadge();
+                });
+                
+                container.appendChild(notificationElement);
+            });
+        }
+        
+        function updateNotificationBadge() {
+            const unreadCount = appState.notifications.filter(n => n.unread).length;
+            const badges = document.querySelectorAll('.notification-badge');
+            badges.forEach(badge => {
+                if (unreadCount > 0) {
+                    badge.textContent = unreadCount;
+                    badge.classList.remove('hidden');
+                } else {
+                    badge.classList.add('hidden');
+                }
+            });
+        }
+        
+        // Funciones de posts mejoradas
+        function generatePosts() {
+            const postsContainer = document.getElementById('posts-container');
+            if (!postsContainer) return;
+            
+            postsContainer.innerHTML = '';
+            
+            appState.posts.forEach(post => {
+                const postElement = document.createElement('div');
+                postElement.className = 'flex flex-col items-stretch justify-start rounded-xl bg-white dark:bg-gray-800 shadow-md';
+                postElement.innerHTML = `
+                    <div class="flex items-center gap-3 p-4">
+                        <div class="w-10 h-10 bg-center bg-no-repeat aspect-square bg-cover rounded-full" style='background-image: url("${post.avatar}");'></div>
+                        <div class="flex-grow">
+                            <p class="text-gray-700 dark:text-white text-sm font-bold">${post.user}</p>
+                            <p class="text-gray-400 text-xs font-normal">${post.time}</p>
+                        </div>
+                        <div class="flex h-6 shrink-0 items-center justify-center gap-x-1 rounded-full bg-primary/20 dark:bg-primary/30 px-3">
+                            <p class="text-primary dark:text-blue-300 text-xs font-medium">${post.category}</p>
+                        </div>
+                    </div>
+                    <div class="px-4 pb-3">
+                        <p class="text-gray-700 dark:text-gray-300 text-sm font-normal leading-relaxed">${post.content}</p>
+                    </div>
+                    ${post.image ? `<div class="w-full bg-center bg-no-repeat aspect-video bg-cover" style='background-image: url("${post.image}");'></div>` : ''}
+                    <div class="flex items-center justify-between p-3 border-t border-gray-100 dark:border-gray-700">
+                        <div class="flex items-center gap-4">
+                            <button class="flex items-center gap-1 text-gray-700 dark:text-gray-300" onclick="toggleLike(${post.id})">
+                                <span class="material-symbols-outlined ${post.liked ? 'text-red-500' : 'text-gray-400'}" style="font-variation-settings: 'FILL' ${post.liked ? '1' : '0'};">favorite</span>
+                                <span class="text-sm">${post.likes}</span>
+                            </button>
+                            <button class="flex items-center gap-1 text-gray-700 dark:text-gray-300" onclick="showComments(${post.id})">
+                                <span class="material-symbols-outlined">chat_bubble</span>
+                                <span class="text-sm">${post.comments.length}</span>
+                            </button>
+                            <button class="flex items-center gap-1 text-gray-700 dark:text-gray-300" onclick="sharePost(${post.id})">
+                                <span class="material-symbols-outlined">share</span>
+                            </button>
+                        </div>
+                        <div class="flex items-center gap-1 text-gray-400">
+                            <span class="material-symbols-outlined text-sm">location_on</span>
+                            <p class="text-xs font-medium">${post.location}</p>
+                        </div>
+                    </div>
+                    ${post.comments.length > 0 ? `
+                        <div class="px-4 pb-4 space-y-2" id="comments-${post.id}">
+                            ${post.comments.slice(0, 2).map(comment => `
+                                <div class="flex gap-2 items-start">
+                                    <div class="w-6 h-6 bg-gray-300 rounded-full"></div>
+                                    <div class="flex-1">
+                                        <p class="text-xs text-gray-600 dark:text-gray-400">
+                                            <span class="font-semibold">${comment.user}</span>
+                                            ${comment.content}
+                                        </p>
+                                        <span class="text-xs text-gray-400">${comment.time}</span>
+                                    </div>
+                                </div>
+                            `).join('')}
+                            ${post.comments.length > 2 ? `
+                                <button onclick="showComments(${post.id})" class="text-xs text-primary">Ver todos los comentarios</button>
+                            ` : ''}
+                        </div>
+                    ` : ''}
+                `;
+                postsContainer.appendChild(postElement);
+            });
+        }
+        
+        function toggleLike(postId) {
+            const post = appState.posts.find(p => p.id === postId);
+            if (post) {
+                post.liked = !post.liked;
+                post.likes = post.liked ? post.likes + 1 : post.likes - 1;
+                generatePosts();
+                
+                if (post.liked) {
+                    // Simular notificación de like
+                    showToast('¡Te gusta esta publicación!');
+                }
+            }
+        }
+        
+        function showComments(postId) {
+            const post = appState.posts.find(p => p.id === postId);
+            if (post) {
+                const commentText = prompt('Escribe un comentario:');
+                if (commentText && commentText.trim()) {
+                    const newComment = {
+                        user: appState.user?.username || 'Usuario',
+                        content: commentText.trim(),
+                        time: 'ahora'
+                    };
+                    post.comments.push(newComment);
+                    generatePosts();
+                    showToast('Comentario agregado');
+                }
+            }
+        }
+        
+        function sharePost(postId) {
+            showToast('Publicación compartida');
+        }
+        
+        // Funciones adicionales de navegación y inicialización
+        function initializeApp() {
+            // Verificar si el usuario ya está logueado
+            const savedUser = localStorage.getItem('user');
+            if (savedUser) {
+                appState.user = JSON.parse(savedUser);
+            }
+            
+            // Inicializar badges de notificaciones
+            updateNotificationBadge();
+        }
+        
+        function updateNotificationBadge() {
+            const unreadCount = appState.notifications.filter(n => n.unread).length;
+            const badges = document.querySelectorAll('.notification-badge');
+            badges.forEach(badge => {
+                if (unreadCount > 0) {
+                    badge.textContent = unreadCount;
+                    badge.classList.remove('hidden');
+                } else {
+                    badge.classList.add('hidden');
+                }
+            });
+        }
+        
+        // Mejorar función de navegación existente
+        const originalShowScreenFunc = showScreen;
+        showScreen = function(screenId) {
+            originalShowScreenFunc(screenId);
+            
+            // Ejecutar funciones específicas según la pantalla
+            switch(screenId) {
+                case 'feed-principal':
+                    setTimeout(generatePosts, 100);
+                    break;
+                case 'comunidad-grupos':
+                    setTimeout(generateCommunityContent, 100);
+                    break;
+                case 'explorar-actividades':
+                    setTimeout(generateActivitiesContent, 100);
+                    break;
+                case 'notificaciones':
+                    setTimeout(generateNotifications, 100);
+                    break;
+            }
+        };
+        
+        
+        // Generar posts dinámicamente
+        function generatePosts() {
+            const postsContainer = document.getElementById('posts-container');
+            if (!postsContainer) return;
+            
+            postsContainer.innerHTML = '';
+            
+            appState.posts.forEach(post => {
+                const postElement = document.createElement('div');
+                postElement.className = 'flex flex-col items-stretch justify-start rounded-xl bg-white dark:bg-gray-800 shadow-md';
+                postElement.innerHTML = `
+                    <div class="flex items-center gap-3 p-4">
+                        <div class="w-10 h-10 bg-center bg-no-repeat aspect-square bg-cover rounded-full" style='background-image: url("${post.avatar}");'></div>
+                        <div class="flex-grow">
+                            <p class="text-gray-700 dark:text-white text-sm font-bold">${post.user}</p>
+                            <p class="text-gray-400 text-xs font-normal">${post.time}</p>
+                        </div>
+                        <div class="flex h-6 shrink-0 items-center justify-center gap-x-1 rounded-full bg-primary/20 dark:bg-primary/30 px-3">
+                            <p class="text-primary dark:text-blue-300 text-xs font-medium">${post.category}</p>
+                        </div>
+                    </div>
+                    <div class="px-4 pb-3">
+                        <p class="text-gray-700 dark:text-gray-300 text-sm font-normal leading-relaxed">${post.content}</p>
+                    </div>
+                    ${post.image ? `<div class="w-full bg-center bg-no-repeat aspect-video bg-cover" style='background-image: url("${post.image}");'></div>` : ''}
+                    <div class="flex items-center justify-between p-3 border-t border-gray-100 dark:border-gray-700">
+                        <div class="flex items-center gap-4">
+                            <button class="flex items-center gap-1 text-gray-700 dark:text-gray-300" onclick="toggleLike(${post.id})">
+                                <span class="material-symbols-outlined text-red-500" style="font-variation-settings: 'FILL' 1;">favorite</span>
+                                <span class="text-sm">${post.likes}</span>
+                            </button>
+                            <button class="flex items-center gap-1 text-gray-700 dark:text-gray-300">
+                                <span class="material-symbols-outlined">chat_bubble</span>
+                                <span class="text-sm">${post.comments}</span>
+                            </button>
+                            <button class="flex items-center gap-1 text-gray-700 dark:text-gray-300">
+                                <span class="material-symbols-outlined">share</span>
+                            </button>
+                        </div>
+                        <div class="flex items-center gap-1 text-gray-400">
+                            <span class="material-symbols-outlined text-sm">location_on</span>
+                            <p class="text-xs font-medium">${post.location}</p>
+                        </div>
+                    </div>
+                `;
+                postsContainer.appendChild(postElement);
+            });
+        }
+        
+        // Toggle like en posts
+        function toggleLike(postId) {
+            const post = appState.posts.find(p => p.id === postId);
+            if (post) {
+                post.likes = post.liked ? post.likes - 1 : post.likes + 1;
+                post.liked = !post.liked;
+                generatePosts();
+            }
+        }
+        
+        // Enviar mensaje al chat IA
+        function sendChatMessage() {
+            const input = document.getElementById('chat-input');
+            const messagesContainer = document.getElementById('chat-messages');
+            
+            if (!input.value.trim()) return;
+            
+            // Añadir mensaje del usuario
+            const userMessage = document.createElement('div');
+            userMessage.className = 'flex items-end gap-3 justify-end';
+            userMessage.innerHTML = `
+                <div class="flex flex-1 flex-col gap-1 items-end">
+                    <p class="text-text-color/80 dark:text-white/80 text-[13px] font-normal leading-normal max-w-[360px] text-right">Tú</p>
+                    <p class="text-base font-normal leading-normal flex max-w-[360px] rounded-xl rounded-br-none px-4 py-3 bg-user-bubble text-text-color dark:bg-gray-700 dark:text-white">${input.value}</p>
+                </div>
+            `;
+            messagesContainer.appendChild(userMessage);
+            
+            const userInput = input.value;
+            input.value = '';
+            
+            // Simular respuesta del IA
+            setTimeout(() => {
+                const aiResponse = document.createElement('div');
+                aiResponse.className = 'flex items-end gap-3';
+                aiResponse.innerHTML = `
+                    <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full w-10 shrink-0" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB66FGtKLbJyXfD0Lk0PH6ZCGKn2tASBFLiN2xxgDqessP8LCaIOxVaCOS9GxsUfiEMinomtAP_MfUTCH2ERSxNnXYQ3nQMuAxCT1j_X6bBYsjLsKyCreAfRxeNj2W8oafru9DVbDov_GVVYdnF4gRN2z5wbbRyO7nYr_zMirIPMk2vXFFL2f9Ykiz5pSqKo3xXzgQizHDzbhDHGrGHeWVkapuwnz8ho5vgDB9HvwIwCJHf3LoLNXGg3fmw0h2qP39LMxsWOB-KaTw");'></div>
+                    <div class="flex flex-1 flex-col gap-1 items-start">
+                        <p class="text-text-color/80 dark:text-white/80 text-[13px] font-normal leading-normal max-w-[360px]">Coach IA</p>
+                        <div class="flex items-center gap-2">
+                            <p class="text-base font-normal leading-normal flex max-w-[360px] rounded-xl rounded-bl-none px-4 py-3 bg-primary/20 text-text-color dark:text-white dark:bg-primary/30">
+                                ${generateAIResponse(userInput)}
+                            </p>
+                            <span class="text-text-color/60 dark:text-white/60 text-xl">😊</span>
+                        </div>
+                    </div>
+                `;
+                messagesContainer.appendChild(aiResponse);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }, 1500);
+            
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+        
+        // Generar respuesta del IA
+        function generateAIResponse(userInput) {
+            const responses = [
+                "Entiendo cómo te sientes. Es completamente normal tener estos pensamientos.",
+                "Me parece que estás pasando por un momento difícil. ¿Quieres hablar más sobre eso?",
+                "Eso suena muy positivo. Me alegra escuchar que te sientes así.",
+                "¿Has intentado alguna técnica de respiración cuando te sientes de esa manera?",
+                "Es importante que reconozcas estos sentimientos. ¿Qué te ha ayudado en el pasado?",
+                "Tu bienestar es muy importante. ¿Hay algo específico que te gustaría trabajar?"
+            ];
+            return responses[Math.floor(Math.random() * responses.length)];
+        }
+        
+        // Manejar Enter en chat
+        document.addEventListener('DOMContentLoaded', function() {
+            const chatInput = document.getElementById('chat-input');
+            if (chatInput) {
+                chatInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        sendChatMessage();
+                    }
+                });
+            }
+        });
+        
+        // Funciones para crear post
+        let selectedPostType = 'text';
+        
+        function selectPostType(type) {
+            selectedPostType = type;
+            const buttons = document.querySelectorAll('.post-type-btn');
+            const imageArea = document.getElementById('image-upload-area');
+            
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-primary/20');
+                btn.classList.add('bg-background-light', 'border', 'border-gray-300');
+                btn.querySelector('p').classList.remove('text-primary');
+                btn.querySelector('p').classList.add('text-gray-700');
+            });
+            
+            event.target.closest('.post-type-btn').classList.add('bg-primary/20');
+            event.target.closest('.post-type-btn').classList.remove('bg-background-light', 'border', 'border-gray-300');
+            event.target.closest('.post-type-btn').querySelector('p').classList.add('text-primary');
+            event.target.closest('.post-type-btn').querySelector('p').classList.remove('text-gray-700');
+            
+            if (type === 'text-image' || type === 'image') {
+                imageArea.classList.remove('hidden');
+            } else {
+                imageArea.classList.add('hidden');
+            }
+        }
+        
+        function publishPost() {
+            const content = document.getElementById('post-content').value;
+            const audience = document.getElementById('audience-selector').value;
+            
+            if (!content.trim()) {
+                showToast('Por favor escribe algo para publicar');
+                return;
+            }
+            
+            const newPost = {
+                id: appState.posts.length + 1,
+                user: appState.user?.username || 'Usuario',
+                avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuBAeZzHjFEJanF1T56Ehe7Y5SwqDmg6e-Bw9NNWR6rQd8Kk1HxCCm6PYl-zGkf-PQeqQZbUTicBVi-w_RlkJeSw4UQq45UOmQSFsPLi4pGEuHnEx8U10JeOHepkyhBX8WKzaRe1I7PmNcfWYbutVeQG1MD4gISUuEvJiQO5y4mekrxxFlqbN5GnGEr_L2PKnXhJdWRYwPhDew1GjDjNlLlgSmYlc6W7EqxerK5CcizbSg_U0aoiqge284KIPeIl_SvtnXvu63GgCIM",
+                time: "ahora",
+                content: content,
+                likes: 0,
+                comments: 0,
+                location: "Tu ubicación",
+                category: audience === 'public' ? 'Público' : audience === 'friends' ? 'Amigos' : 'Privado'
+            };
+            
+            appState.posts.unshift(newPost);
+            document.getElementById('post-content').value = '';
+            showToast('¡Publicación creada exitosamente!');
+            showScreen('feed-principal');
+        }
+        
+        // Contador de caracteres para crear post
+        document.addEventListener('DOMContentLoaded', function() {
+            const postContent = document.getElementById('post-content');
+            const charCounter = document.getElementById('char-counter');
+            const publishBtn = document.getElementById('publish-btn');
+            
+            if (postContent && charCounter && publishBtn) {
+                postContent.addEventListener('input', function() {
+                    const length = this.value.length;
+                    charCounter.textContent = `${length}/500`;
+                    
+                    if (length > 0 && length <= 500) {
+                        publishBtn.classList.remove('text-gray-400');
+                        publishBtn.classList.add('text-primary');
+                    } else {
+                        publishBtn.classList.add('text-gray-400');
+                        publishBtn.classList.remove('text-primary');
+                    }
+                });
+            }
+        });
+        
+        // Función de inicialización completa
+        window.addEventListener('load', function() {
+            initializeApp();
+            
+            // Verificar si el usuario ya está logueado
+            const savedUser = localStorage.getItem('user');
+            if (savedUser) {
+                appState.user = JSON.parse(savedUser);
+                // Si ya está logueado, ir directo al feed
+                setTimeout(() => {
+                    showScreen('feed-principal');
+                }, 2000);
+            } else {
+                // Si no está logueado, mostrar splash y luego welcome
+                startSplashAnimation();
+            }
+            
+            // Configurar listeners adicionales
+            setupEventListeners();
+        });
+        
+        // Configurar listeners para eventos específicos
+        function setupEventListeners() {
+            // Contador de caracteres para crear post
+            const postContent = document.getElementById('post-content');
+            const charCounter = document.getElementById('char-counter');
+            const publishBtn = document.getElementById('publish-btn');
+            
+            if (postContent && charCounter && publishBtn) {
+                postContent.addEventListener('input', function() {
+                    const length = this.value.length;
+                    const maxLength = 500;
+                    
+                    charCounter.textContent = `${length}/${maxLength}`;
+                    
+                    if (length > 0 && length <= maxLength) {
+                        publishBtn.classList.remove('text-gray-400');
+                        publishBtn.classList.add('text-primary');
+                    } else {
+                        publishBtn.classList.add('text-gray-400');
+                        publishBtn.classList.remove('text-primary');
+                    }
+                    
+                    if (length > maxLength) {
+                        charCounter.classList.add('text-red-500');
+                    } else {
+                        charCounter.classList.remove('text-red-500');
+                    }
+                });
+            }
+            
+            // Chat input enter key
+            const chatInput = document.getElementById('chat-input');
+            if (chatInput) {
+                chatInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        sendChatMessage();
+                    }
+                });
+            }
+            
+            // Validación de contraseña en tiempo real
+            const passwordInput = document.getElementById('registro-password');
+            if (passwordInput) {
+                passwordInput.addEventListener('input', function() {
+                    const password = this.value;
+                    const lengthCheck = document.getElementById('length-check');
+                    const numberCheck = document.getElementById('number-check');
+                    
+                    // Verificar longitud
+                    if (password.length >= 8) {
+                        lengthCheck.textContent = 'check_circle';
+                        lengthCheck.classList.remove('text-gray-400');
+                        lengthCheck.classList.add('text-green-500');
+                    } else {
+                        lengthCheck.textContent = 'radio_button_unchecked';
+                        lengthCheck.classList.remove('text-green-500');
+                        lengthCheck.classList.add('text-gray-400');
+                    }
+                    
+                    // Verificar número
+                    if (/\d/.test(password)) {
+                        numberCheck.textContent = 'check_circle';
+                        numberCheck.classList.remove('text-gray-400');
+                        numberCheck.classList.add('text-green-500');
+                    } else {
+                        numberCheck.textContent = 'radio_button_unchecked';
+                        numberCheck.classList.remove('text-green-500');
+                        numberCheck.classList.add('text-gray-400');
+                    }
+                });
+            }
+            
+            // Verificar disponibilidad de usuario
+            const usernameInput = document.getElementById('registro-username');
+            if (usernameInput) {
+                usernameInput.addEventListener('input', function() {
+                    const username = this.value;
+                    const check = document.getElementById('username-check');
+                    
+                    if (username.length >= 3) {
+                        setTimeout(() => {
+                            check.classList.remove('hidden');
+                        }, 500);
+                    } else {
+                        check.classList.add('hidden');
+                    }
+                });
+            }
+        }
+        
+        // Override showScreen para manejar la generación de posts y otras pantallas
+        const originalShowScreen = showScreen;
+        showScreen = function(screenId) {
+            originalShowScreen(screenId);
+            
+            switch(screenId) {
+                case 'feed-principal':
+                    setTimeout(generatePosts, 100);
+                    break;
+                case 'comunidad-grupos':
+                    setTimeout(generateCommunityContent, 100);
+                    break;
+                case 'explorar-actividades':
+                    setTimeout(generateActivitiesContent, 100);
+                    break;
+                case 'notificaciones':
+                    setTimeout(generateNotifications, 100);
+                    break;
+            }
+        };
+    </script>
+</body>
+</html>
