@@ -1460,6 +1460,7 @@
 
         // Funciones de navegación
         function showScreen(screenId) {
+            console.log('Navegando a pantalla:', screenId);
             // Ocultar todas las pantallas
             document.querySelectorAll('.screen').forEach(screen => {
                 screen.classList.add('hidden');
@@ -1472,11 +1473,15 @@
                 targetScreen.classList.remove('hidden');
                 targetScreen.classList.add('active');
                 appState.currentScreen = screenId;
+                console.log('Pantalla activa:', screenId);
+            } else {
+                console.error('Pantalla no encontrada:', screenId);
             }
         }
 
         // Función de splash screen con animación
         function startSplashAnimation() {
+            console.log('Iniciando animación del splash screen');
             const loadingBar = document.getElementById('loading-bar');
             let width = 0;
             const interval = setInterval(() => {
@@ -1485,6 +1490,8 @@
                     width = 100;
                     clearInterval(interval);
                     setTimeout(() => {
+                        console.log('Splash completado, navegando a welcome screen');
+                        // SIEMPRE ir al welcome screen después del splash
                         showScreen('welcome-screen');
                     }, 500);
                 }
@@ -2074,14 +2081,27 @@
         
         // Funciones adicionales de navegación y inicialización
         function initializeApp() {
-            // Verificar si el usuario ya está logueado
+            // Solo inicializar badges de notificaciones
+            // No cargar usuario automáticamente - debe hacer login
+            updateNotificationBadge();
+        }
+        
+        // Función opcional para verificar usuario guardado
+        function checkSavedUser() {
             const savedUser = localStorage.getItem('user');
             if (savedUser) {
                 appState.user = JSON.parse(savedUser);
+                return true;
             }
-            
-            // Inicializar badges de notificaciones
-            updateNotificationBadge();
+            return false;
+        }
+        
+        // Función para limpiar datos (útil para testing)
+        function clearAppData() {
+            localStorage.removeItem('user');
+            localStorage.removeItem('diaryEntries');
+            appState.user = null;
+            console.log('Datos de la aplicación limpiados');
         }
         
         function updateNotificationBadge() {
@@ -2326,20 +2346,12 @@
         
         // Función de inicialización completa
         window.addEventListener('load', function() {
+            console.log('Aplicación cargada, iniciando...');
             initializeApp();
             
-            // Verificar si el usuario ya está logueado
-            const savedUser = localStorage.getItem('user');
-            if (savedUser) {
-                appState.user = JSON.parse(savedUser);
-                // Si ya está logueado, ir directo al feed
-                setTimeout(() => {
-                    showScreen('feed-principal');
-                }, 2000);
-            } else {
-                // Si no está logueado, mostrar splash y luego welcome
-                startSplashAnimation();
-            }
+            // SIEMPRE comenzar con el splash screen
+            console.log('Iniciando splash screen');
+            startSplashAnimation();
             
             // Configurar listeners adicionales
             setupEventListeners();
@@ -2435,26 +2447,6 @@
             }
         }
         
-        // Override showScreen para manejar la generación de posts y otras pantallas
-        const originalShowScreen = showScreen;
-        showScreen = function(screenId) {
-            originalShowScreen(screenId);
-            
-            switch(screenId) {
-                case 'feed-principal':
-                    setTimeout(generatePosts, 100);
-                    break;
-                case 'comunidad-grupos':
-                    setTimeout(generateCommunityContent, 100);
-                    break;
-                case 'explorar-actividades':
-                    setTimeout(generateActivitiesContent, 100);
-                    break;
-                case 'notificaciones':
-                    setTimeout(generateNotifications, 100);
-                    break;
-            }
-        };
     </script>
 </body>
 </html>

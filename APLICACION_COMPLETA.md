@@ -15,7 +15,7 @@ He creado una aplicación **TOTALMENTE FUNCIONAL** con todas las 18 pantallas de
 
 ### Opción 2: Abrir directamente en navegador
 ```
-📁 joven_saludable_completo.html
+index.html
 ```
 
 ---
